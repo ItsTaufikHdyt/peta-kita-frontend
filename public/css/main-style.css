@@ -188,8 +188,8 @@ body {
 }
 
 .icon-2 {
-  top: 30%;
-  right: 10%;
+  top: 25%;
+  right: 25%;
   animation-delay: 1s;
 }
 
@@ -201,7 +201,7 @@ body {
 
 .icon-4 {
   bottom: 10%;
-  right: 5%;
+  right: 20%;
   animation-delay: 3s;
 }
 
@@ -213,7 +213,7 @@ body {
 
 .icon-6 {
   top: 60%;
-  right: 15%;
+  right: 5%;
   animation-delay: 5s;
 }
 
