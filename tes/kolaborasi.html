@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jakarta Satu - Data Portal</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background-color: rgb(203 228 253);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 15px 0;
+        }
+        .navbar-brand img {
+            height: 40px;
+        }
+        .btn-primary {
+            background-color: #ff8c00;
+            border-color: #ff8c00;
+        }
+        .btn-primary:hover {
+            background-color: #e67e00;
+            border-color: #e67e00;
+        }
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .main-title {
+            color: #00397a;
+            font-weight: bold;
+            text-align: center;
+            margin: 30px 0;
+        }
+        .subtitle {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .footer {
+            background-color: white;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+        .contact-icon {
+            font-size: 20px;
+            color: #00397a;
+            margin-right: 10px;
+        }
+        .social-icons a {
+            margin-right: 15px;
+            color: #00397a;
+        }
+        .service-card {
+            padding: 30px;
+            text-align: center;
+        }
+        .breadcrumb-section {
+            background-color: transparent;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="https://via.placeholder.com/150x40?text=JAKARTA+SATU" alt="Jakarta Satu Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Peta Jakarta</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">TanyaAI</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Tentang</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb-section">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#"><i class="fas fa-arrow-left me-2"></i>Beranda</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Urun Data</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <h1 class="main-title">Urun Data</h1>
+        
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <p class="subtitle">Ingin turut serta meningkatkan kualitas data dan informasi di Jakarta Satu?</p>
+                <p class="subtitle">Kanal urun data menjadi ruang kontribusi untukmu!</p>
+                <p class="subtitle">Dari kita, oleh kita dan untuk kita.</p>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-md-6 offset-md-3">
+                <div class="card service-card">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4>Input Data Bangunan</h4>
+                            <a href="#" class="btn btn-primary mt-3">Akses Layanan</a>
+                        </div>
+                        <div class="col-md-6">
+                            <img src="https://via.placeholder.com/150x200?text=Phone+App" class="img-fluid" alt="Mobile App">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="https://via.placeholder.com/150x40?text=JAKARTA+SATU" alt="Jakarta Satu Logo" class="mb-3">
+                    <p>Situs ini merupakan sarana komunikasi dan visualisasi peta dan data dari program Jakarta Satu baik untuk Pemerintah Provinsi DKI Jakarta ataupun untuk masyarakat.</p>
+                </div>
+                <div class="col-md-6">
+                    <h5>Informasi Kontak</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <i class="fas fa-envelope contact-icon"></i>jakartasatu@jakarta.go.id
+                        </li>
+                        <li class="mb-2">
+                            <i class="fab fa-twitter contact-icon"></i>Jakarta Satu
+                        </li>
+                        <li class="mb-2">
+                            <i class="fab fa-youtube contact-icon"></i>Jakarta Satu DKI
+                        </li>
+                        <li class="mb-2">
+                            <i class="fab fa-instagram contact-icon"></i>jakartasatudki
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p>© Hak Cipta 2025. Pemerintah Provinsi Daerah Khusus Ibu Kota Jakarta.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

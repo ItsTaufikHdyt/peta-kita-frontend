@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bontang</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @keyframes float {
+            0% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(10deg);
+            }
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+        }
+        
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .float-animation-delay-1 {
+            animation-delay: 1s;
+        }
+        
+        .float-animation-delay-2 {
+            animation-delay: 2s;
+        }
+        
+        .float-animation-delay-3 {
+            animation-delay: 3s;
+        }
+        
+        .float-animation-delay-4 {
+            animation-delay: 4s;
+        }
+        
+        .float-animation-delay-5 {
+            animation-delay: 5s;
+        }
+    </style>
+</head>
+
+<body class="bg-sky-100 font-sans relative min-h-screen">
+    <!-- Floating Background Icons -->
+    <div class="absolute top-[15%] left-[5%] opacity-30 float-animation transition-all duration-300 ease-in-out hover:opacity-70 hover:scale-110">
+        <i class="fas fa-globe text-2xl"></i>
+    </div>
+    <div class="absolute top-[30%] right-[10%] opacity-30 float-animation float-animation-delay-1 transition-all duration-300 ease-in-out hover:opacity-70 hover:scale-110">
+        <i class="fas fa-book text-2xl"></i>
+    </div>
+    <div class="absolute bottom-[20%] left-[8%] opacity-30 float-animation float-animation-delay-2 transition-all duration-300 ease-in-out hover:opacity-70 hover:scale-110">
+        <i class="fas fa-map-marker-alt text-2xl"></i>
+    </div>
+    <div class="absolute bottom-[10%] right-[5%] opacity-30 float-animation float-animation-delay-3 transition-all duration-300 ease-in-out hover:opacity-70 hover:scale-110">
+        <i class="fas fa-globe-asia text-2xl"></i>
+    </div>
+    <div class="absolute top-[30%] left-[35%] opacity-30 float-animation float-animation-delay-4 transition-all duration-300 ease-in-out hover:opacity-70 hover:scale-110">
+        <i class="fas fa-map text-2xl"></i>
+    </div>
+    <div class="absolute top-[60%] right-[15%] opacity-30 float-animation float-animation-delay-5 transition-all duration-300 ease-in-out hover:opacity-70 hover:scale-110">
+        <i class="fas fa-building text-2xl"></i>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="bg-transparent pt-5">
+        <div class="container mx-auto">
+            <div class="flex justify-center">
+                <button class="lg:hidden py-2 px-4 rounded border border-gray-300" id="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <div class="hidden lg:flex justify-center" id="navbar-menu">
+                <ul class="flex flex-col lg:flex-row">
+                    <li class="mx-6">
+                        <a href="#" class="text-blue-600 font-medium text-lg">Beranda</a>
+                    </li>
+                    <li class="mx-6">
+                        <a href="#" class="text-blue-600 font-medium text-lg">Peta Bontang</a>
+                    </li>
+                    <li class="mx-6">
+                        <a href="#" class="text-blue-600 font-medium text-lg">Tentang</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- Mobile Menu -->
+            <div class="hidden flex-col items-center my-2" id="mobile-menu">
+                <a href="#" class="text-blue-600 font-medium text-lg py-2">Beranda</a>
+                <a href="#" class="text-blue-600 font-medium text-lg py-2">Peta Bontang</a>
+                <a href="#" class="text-blue-600 font-medium text-lg py-2">Tentang</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mx-auto pt-5">
+        <!-- Logo -->
+        <div class="flex justify-center">
+            <img class="h-64 w-auto" src="assets/img/bontang.svg" alt="Logo Bontang">
+        </div>
+        
+        <!-- Slogan -->
+        <h2 class="text-center text-orange-500 font-bold text-2xl md:text-3xl my-5">PETAKITA, Satu Data Indonesia</h2>
+
+        <!-- Service Sections -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10 px-4">
+            <!-- Layanan Section -->
+            <div class="menu-icon mb-8 group">
+                <h3 class="text-blue-600 font-bold text-2xl mb-5 text-center">Layanan</h3>
+                <div class="icon-image block group-hover:hidden">
+                    <img src="assets/img/desktop-computer.png" alt="Layanan" class="w-24 h-24 mx-auto mb-4">
+                    <p class="text-center max-w-xs mx-auto text-gray-700 text-sm leading-relaxed mb-4">
+                        Kamu bisa memanfaatkan data spasial Bontang Satu dengan proses dan alur yang mudah
+                    </p>
+                </div>
+
+                <div class="icon-button hidden group-hover:block">
+                    <a href="kategori.html" class="block no-underline text-white">
+                        <div class="bg-orange-500 text-white border-none rounded-full py-2 px-5 my-2 font-medium shadow-md flex items-center justify-center transition duration-300 hover:bg-orange-600 hover:-translate-y-0.5">
+                            <i class="fas fa-map mr-2"></i> Galeri Peta & Dashboard
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Kolaborasi Section -->
+            <div class="menu-icon mb-8 group">
+                <h3 class="text-blue-600 font-bold text-2xl mb-5 text-center">Kolaborasi</h3>
+                <div class="icon-image block group-hover:hidden">
+                    <img src="assets/img/product-management.png" alt="Kolaborasi" class="w-24 h-24 mx-auto mb-4">
+                    <p class="text-center max-w-xs mx-auto text-gray-700 text-sm leading-relaxed mb-4">
+                        Mau lihat Bontang dan aplikasi yang terhubung dengan Jakarta Satu? yuk lihat disini
+                    </p>
+                </div>
+
+                <div class="icon-button hidden group-hover:block">
+                    <a href="simpuljaringan.html" class="block no-underline text-white">
+                        <div class="bg-orange-500 text-white border-none rounded-full py-2 px-5 my-2 font-medium shadow-md flex items-center justify-center transition duration-300 hover:bg-orange-600 hover:-translate-y-0.5">
+                            <i class="fas fa-network-wired mr-2"></i> Simpul Jaringan
+                        </div>
+                    </a>
+                    <a href="simpuljaringan.html" class="block no-underline text-white">
+                        <div class="bg-orange-500 text-white border-none rounded-full py-2 px-5 my-2 font-medium shadow-md flex items-center justify-center transition duration-300 hover:bg-orange-600 hover:-translate-y-0.5">
+                            <i class="fas fa-mobile-alt mr-2"></i> Aplikasi
+                        </div>
+                    </a>
+                    <a href="simpuljaringan.html" class="block no-underline text-white">
+                        <div class="bg-orange-500 text-white border-none rounded-full py-2 px-5 my-2 font-medium shadow-md flex items-center justify-center transition duration-300 hover:bg-orange-600 hover:-translate-y-0.5">
+                            <i class="fas fa-database mr-2"></i> Urun Data
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Informasi Section -->
+            <div class="menu-icon mb-8 group">
+                <h3 class="text-blue-600 font-bold text-2xl mb-5 text-center">Informasi</h3>
+                <div class="icon-image block group-hover:hidden">
+                    <img src="assets/img/information.png" alt="Informasi" class="w-24 h-24 mx-auto mb-4">
+                    <p class="text-center max-w-xs mx-auto text-gray-700 text-sm leading-relaxed mb-4">
+                        Berita dan informasi terkait data spasial di Bontang
+                    </p>
+                </div>
+
+                <div class="icon-button hidden group-hover:block">
+                    <a href="simpuljaringan.html" class="block no-underline text-white">
+                        <div class="bg-orange-500 text-white border-none rounded-full py-2 px-5 my-2 font-medium shadow-md flex items-center justify-center transition duration-300 hover:bg-orange-600 hover:-translate-y-0.5">
+                            <i class="fas fa-info-circle mr-2"></i> Tentang
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fixed Buttons -->
+    <a href="#" class="fixed bottom-5 right-5 w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center shadow-lg z-50">
+        <i class="fas fa-home"></i>
+    </a>
+    <a href="#" class="fixed bottom-5 right-20 w-12 h-12 bg-orange-500 text-white rounded-full flex items-center justify-center shadow-lg z-50">
+        <i class="fas fa-comments"></i>
+    </a>
+
+    <!-- JavaScript for Mobile Menu Toggle -->
+    <script>
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+        });
+        
+        // Add mobile display logic for service sections
+        if (window.innerWidth < 768) {
+            const menuIcons = document.querySelectorAll('.menu-icon');
+            menuIcons.forEach(icon => {
+                const iconImage = icon.querySelector('.icon-image');
+                const iconButton = icon.querySelector('.icon-button');
+                
+                iconImage.classList.remove('group-hover:hidden');
+                iconButton.classList.remove('hidden', 'group-hover:block');
+                iconButton.classList.add('block', 'mt-4');
+            });
+        }
+    </script>
+</body>
+</html>
