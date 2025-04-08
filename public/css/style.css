@@ -1,3 +1,14 @@
+:root {
+  --primary: #0056b3;
+  --primary-dark: #004085;
+  --secondary: #28a745;
+  --light: #f8f9fa;
+  --dark: #343a40;
+  --accent: #ffc107;
+  --gradient-start: #cae6ff;
+  --gradient-end: #0d4e78;
+}
+
 html,
 body {
   height: 100%;
@@ -14,6 +25,7 @@ body {
   min-height: 100vh;
 }
 
+/* Navigation */
 .navbar-container {
   position: fixed;
   top: 15px;
@@ -24,28 +36,47 @@ body {
 }
 
 .navbar {
-  background-color: rgba(255, 255, 255, 0.7);
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
   padding: 15px 0;
-  border-radius: 50px;
+  border-radius: 20px;
   margin: 0 auto;
   transition: all 0.3s ease;
 }
 
 .navbar-scrolled {
-  border-radius: 50px;
-  top: 0;
-  padding: 10px 0;
+  padding: 8px 0;
+  border-radius: 15px;
 }
 
 .navbar-brand img {
-  height: 40px;
+  height: 45px;
+  transition: all 0.3s ease;
 }
 
 .navbar-nav .nav-link {
-  color: #0d6efd;
-  margin: 0 10px;
-  font-weight: 500;
+  color: var(--primary);
+  margin: 0 12px;
+  font-weight: 600;
+  position: relative;
+  transition: all 0.3s ease;
+  padding: 8px 5px;
+}
+
+.navbar-nav .nav-link:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: var(--primary);
+  bottom: 0;
+  left: 0;
+  transition: width 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover:after {
+  width: 100%;
 }
 
 .ocean {
@@ -118,20 +149,22 @@ body {
 }
 
 .section-title {
-  color: #004085;
-  font-weight: 600;
+  color: var(--primary-dark);
+  font-weight: 700;
   text-align: center;
-  margin: 30px 0;
+  margin: 40px 0;
   position: relative;
+  letter-spacing: 1px;
 }
 
 .section-title::after {
   content: "";
   display: block;
-  width: 70px;
-  height: 3px;
-  background-color: #004085;
-  margin: 10px auto 0;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  margin: 15px auto 0;
+  border-radius: 2px;
 }
 
 .search-box {
@@ -146,37 +179,68 @@ body {
 }
 
 .department-card {
-  padding: 20px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 16px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  padding: 25px 15px;
   text-align: center;
   height: 100%;
-  transition: transform 0.3s;
-  cursor: pointer;
+  transition: all 0.4s ease;
+  overflow: hidden;
+  position: relative;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .department-card-link {
   display: block;
-  /* Memastikan link mengambil seluruh area div */
   text-decoration: none;
-  /* Menghilangkan garis bawah */
   color: inherit;
-  /* Warna tetap sama */
 }
 
 .department-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.department-card:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+
+.department-card:hover:before {
+  transform: scaleX(1);
 }
 
 .department-icon {
   width: 80px;
   height: 80px;
   margin: 0 auto 15px;
+  transition: transform 0.4s ease;
+}
+
+.department-card:hover .department-icon {
+  transform: scale(1.1);
 }
 
 .department-name {
-  font-size: 14px;
-  color: #ffffff;
+  font-size: 16px;
+  color: var(--dark);
   margin-top: 15px;
-  font-weight: 500;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.department-card:hover .department-name {
+  color: var(--primary);
 }
 
 .see-more-btn {
@@ -257,35 +321,57 @@ body {
 }
 .map-item {
   background-color: white;
-  border-radius: 10px;
-  padding: 20px;
-  margin-bottom: 20px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 15px;
+  padding: 0;
+  margin-bottom: 25px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: all 0.3s ease;
 }
+
+.map-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.map-preview {
+  height: 180px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.map-preview-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.3)
+  );
+}
+
+.map-content {
+  padding: 20px;
+}
+
 .map-item-title {
-  font-weight: 600;
+  font-weight: 700;
   color: #004085;
   margin-bottom: 10px;
+  font-size: 1.2rem;
 }
+
 .map-item-desc {
   color: #555;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   margin-bottom: 15px;
+  line-height: 1.5;
 }
-.detail-button {
-  background-color: #28a745;
-  color: white;
-  border-radius: 5px;
-  padding: 5px 15px;
-  font-size: 0.9rem;
-  display: inline-block;
-  text-decoration: none;
-}
-.detail-button:hover {
-  background-color: #218838;
-  color: white;
-  text-decoration: none;
-}
+
 .map-icon {
   width: 40px;
   height: 40px;
@@ -296,6 +382,78 @@ body {
   justify-content: center;
   float: right;
 }
+
+.map-meta {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+  color: #6c757d;
+  font-size: 0.85rem;
+}
+
+.map-meta-item {
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.map-meta-item i {
+  margin-right: 5px;
+}
+.map-stats {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  display: flex;
+}
+
+.map-stat {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: var(--primary);
+  padding: 3px 8px;
+  border-radius: 3px;
+  margin-right: 8px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.map-stat i {
+  margin-right: 3px;
+  font-size: 0.6rem;
+}
+.detail-button {
+  background-color: #28a745;
+  color: white;
+  border-radius: 5px;
+  padding: 8px 20px;
+  font-size: 0.9rem;
+  display: inline-block;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.badge-category {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: rgba(0, 86, 179, 0.9);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+.detail-button:hover {
+  background-color: #218838;
+  color: white;
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
+}
+
 .pagination {
   justify-content: center;
   margin: 40px 0;
@@ -314,7 +472,7 @@ body {
 }
 .footer-text {
   color: #ffffff;
-  font-size: 14px;
+  font-size: 15px;
 }
 .footer-divider {
   width: 60%;
