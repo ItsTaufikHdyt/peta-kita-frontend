@@ -18,8 +18,11 @@
   </head>
 
   <body>
+
     <!-- Ocean Waves Background -->
     <div class="ocean">
+      <div class="wave"></div>
+      <div class="wave"></div>
       <div class="wave"></div>
       <div class="wave"></div>
       <div class="wave"></div>
@@ -44,6 +47,24 @@
     <div class="floating-icon icon-6">
       <i class="fas fa-map-marker-alt fa-2x"></i>
     </div>
+    <div class="floating-icon icon-7">
+      <i class="fas fa-compass fa-2x"></i>
+    </div>
+    <div class="floating-icon icon-8">
+      <i class="fas fa-sailboat fa-2x"></i>
+    </div>
+    <div class="floating-icon icon-9">
+      <i class="fas fa-umbrella-beach fa-2x"></i>
+    </div>
+    <div class="floating-icon icon-10">
+      <i class="fas fa-cloud fa-2x"></i>
+    </div>
+    <div class="floating-icon icon-11">
+      <i class="fas fa-sun fa-2x"></i>
+    </div>
+    <div class="floating-icon icon-12">
+      <i class="fas fa-moon fa-2x"></i>
+    </div>
 
     <!-- Main Content Container -->
     <div class="main-content-container">
@@ -67,7 +88,10 @@
                 <a class="nav-link" href="#">Beranda</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Peta Bontang</a>
+                <a class="nav-link" href="#">Bapperida</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Satu Data</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Tentang</a>
@@ -131,20 +155,20 @@
             </div>
 
             <div class="icon-button">
-              <a href="simpuljaringan.html" class="menu-button-link">
+              <a href="https://geoportal.bontangkota.go.id/" target="_blank" class="menu-button-link">
                 <div class="menu-button mb-2">
-                  <i class="fas fa-network-wired"></i> Simpul Jaringan
+                  <i class="fas fa-network-wired"></i> Geoportal
                 </div>
               </a>
-              <a href="simpuljaringan.html" class="menu-button-link">
+              <!-- <a href="simpuljaringan.html" class="menu-button-link">
                 <div class="menu-button mb-2">
                   <i class="fas fa-mobile-alt"></i> Aplikasi
                 </div>
-              </a>
-              <a href="simpuljaringan.html" class="menu-button-link">
+              </a> -->
+              <!-- <a href="simpuljaringan.html" class="menu-button-link">
                 <div class="menu-button mb-2">
                   <i class="fas fa-database"></i> Urun Data
-                </div>
+                </div> -->
               </a>
             </div>
           </div>
@@ -178,34 +202,63 @@
     <!-- Fixed Buttons -->
     <!-- <a href="#" id="home-button">
       <i class="fas fa-home"></i>
-    </a>
-    <a href="#" class="chat-button">
-      <i class="fas fa-comments"></i>
     </a> -->
+    <a href="#" class="chat-button" id="chat-toggle">
+      <i class="fas fa-comments"></i>
+    </a>
 
-    <!-- Bubbles Script - Limited number of bubbles -->
+    <!-- Chatbot Container -->
+    <div class="chatbot-container" id="chatbot">
+      <div class="chatbot-header">
+        <div class="chatbot-title">
+          <i class="fas fa-robot"></i>
+          <span>PetaKita Assistant</span>
+        </div>
+        <button class="chatbot-close" id="chat-close">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="chatbot-messages" id="chat-messages">
+        <div class="message bot-message">
+          <div class="message-content">
+            <i class="fas fa-robot"></i>
+            <p>Halo! Saya asisten PetaKita yang siap membantu Anda dengan informasi seputar Kota Bontang. Apa yang ingin Anda ketahui tentang Bontang hari ini?</p>
+          </div>
+        </div>
+      </div>
+      <div class="chatbot-input">
+        <input type="text" id="user-input" placeholder="Tanyakan tentang Bontang...">
+        <button id="send-message">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Bubbles Script - Increased number of bubbles -->
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        const numBubbles = 8; // Jumlah bubble yang sudah dikurangi
+        const numBubbles = 25; // Increased number of bubbles
+        const numParticles = 15; // Number of particles
 
         // Membuat container untuk semua bubble yang dibatasi pada viewport
         const bubbleContainer = document.createElement("div");
         bubbleContainer.className = "bubble-container";
-        bubbleContainer.style.position = "fixed"; // Menggunakan fixed alih-alih absolute
+        bubbleContainer.style.position = "fixed";
         bubbleContainer.style.top = "0";
         bubbleContainer.style.left = "0";
         bubbleContainer.style.width = "100%";
-        bubbleContainer.style.height = "100vh"; // Menggunakan viewport height
+        bubbleContainer.style.height = "100vh";
         bubbleContainer.style.overflow = "hidden";
         bubbleContainer.style.pointerEvents = "none";
         bubbleContainer.style.zIndex = "1000";
 
+        // Create bubbles
         for (let i = 0; i < numBubbles; i++) {
           const bubble = document.createElement("span");
           bubble.className = "bubble";
 
-          // Ukuran random antara 10px dan 25px (bubble lebih kecil)
-          const size = Math.random() * 15 + 10;
+          // Ukuran random antara 8px dan 30px (variasi ukuran lebih besar)
+          const size = Math.random() * 22 + 8;
           bubble.style.width = size + "px";
           bubble.style.height = size + "px";
 
@@ -213,24 +266,54 @@
           bubble.style.left = Math.random() * 100 + "%";
 
           // Posisi awal random di bagian bawah (dalam viewport)
-          bubble.style.bottom = Math.random() * 20 + "%";
+          bubble.style.bottom = Math.random() * 30 + "%";
 
-          // Durasi animasi random (lebih cepat)
-          const duration = Math.random() * 6 + 5;
+          // Durasi animasi random (lebih bervariasi)
+          const duration = Math.random() * 8 + 4;
           bubble.style.animationDuration = duration + "s";
 
           // Delay animasi random
-          bubble.style.animationDelay = Math.random() * 5 + "s";
+          bubble.style.animationDelay = Math.random() * 8 + "s";
+
+          // Opacity random untuk efek lebih natural
+          bubble.style.opacity = Math.random() * 0.5 + 0.3;
 
           bubbleContainer.appendChild(bubble);
         }
 
-        // Menambahkan container ke body hanya sekali
+        // Create particles
+        for (let i = 0; i < numParticles; i++) {
+          const particle = document.createElement("div");
+          particle.className = "particle";
+
+          // Random size between 2px and 6px
+          const size = Math.random() * 4 + 2;
+          particle.style.width = size + "px";
+          particle.style.height = size + "px";
+
+          // Random position
+          particle.style.left = Math.random() * 100 + "%";
+          particle.style.top = Math.random() * 100 + "%";
+
+          // Random animation duration
+          const duration = Math.random() * 10 + 15;
+          particle.style.animationDuration = duration + "s";
+
+          // Random delay
+          particle.style.animationDelay = Math.random() * 5 + "s";
+
+          bubbleContainer.appendChild(particle);
+        }
+
+        // Menambahkan container ke body
         document.body.appendChild(bubbleContainer);
       });
     </script>
 
     <!-- Bootstrap JS Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="public/js/chatbot.js"></script>
+    <script src="public/js/chatbot-api.js"></script>
+    <!-- <script src="public/js/chatbot-api-deepseek.js"></script> -->
   </body>
 </html>

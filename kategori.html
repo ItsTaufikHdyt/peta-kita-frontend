@@ -13,6 +13,8 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="public/css/style.css">
+    <!-- Add Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   </head>
 
   <body>
@@ -45,7 +47,10 @@
                   <a class="nav-link" href="#">Beranda</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Peta bontang</a>
+                  <a class="nav-link" href="#">Bapperida</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Satu Data</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#">Tentang</a>
@@ -77,25 +82,28 @@
       <div class="top-simpul">
         <h2 class="section-title">PERENCANAAN PEMBANGUNAN</h2>
         <p class="top-simpul-description">
+          Musyawarah Perencanaan Pembangunan (Musrenbang) adalah forum antar pemangku kepentingan dalam rangka menyusun rencana pembangunan, baik ditingkat nasional maupun daerah. Tahapan Musrenbang di Kota Bontang diawali dengan Rembuk Warga yang menjadi forum musyawarah ditingkat RT.
+
           ASMARA BANGSIGE menyajikan rekap dan detail informasi dari setiap
           usulan hasil rembug warga. STIMULAN menyajikan rekap dan detail
           informasi usulan stimulan dari tiap RT
         </p>
 
         <div class="row mt-5">
-          <div class="col-md-6 offset-md-3">
+          <div class="col-md-6 mb-4">
             <div class="card service-card">
-              <div class="row">
-                <div class="col-md-8">
+              <div class="row g-0">
+                <div class="col-md-8 p-4">
                   <h4 class="contact-title">ASMARA BANG SIGE</h4>
+                  <p class="mb-3">Sistem informasi aspirasi masyarakat dalam pembangunan berbasis geospasial.</p>
                   <a
                     href="dashboard.html"
                     target="_blank"
                     class="btn btn-warning mt-3"
-                    >Akses Layanan</a
+                    ><i class="fas fa-external-link-alt me-2"></i>Akses Layanan</a
                   >
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 d-flex align-items-center justify-content-center">
                   <img
                     src="assets/img/aspirating.png"
                     class="img-fluid"
@@ -105,42 +113,29 @@
               </div>
             </div>
           </div>
-        </div>
-
-        <div class="row g-4">
-          <!-- <div class="col-12 col-md-12">
-                    <div class="top-simpul-card">
-                        <img src="/assets/img/bontang.svg" alt="Dinas Bina Marga" class="top-simpul-icon">
-                        <p class="top-simpul-name">Asmara Bang Sige</p>
-                    </div>
-                </div> -->
-          <!-- <div class="col-12 col-md-8">
-
-                        <iframe src="https://www.youtube.com/embed/kYLGZ9448QY"
-                            title="ASMARA BANG SIGE (Aspirasi Masyarakat Dalam Pembangunan Berbasis Geospasial)"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-                </div> -->
-          <!-- <div class="col-12 col-md-4">
-                    <div class="top-simpul-card">
-                        <img src="/assets/img/bontang.svg" alt="Dinas Sumber Daya Air" class="top-simpul-icon">
-                        <p class="top-simpul-name">Dinas Sumber Daya Air</p>
-                    </div>
+          <div class="col-md-6 mb-4">
+            <div class="card service-card">
+              <div class="row g-0">
+                <div class="col-md-8 p-4">
+                  <h4 class="contact-title">STIMULAN</h4>
+                  <p class="mb-3">Sistem informasi usulan stimulan pembangunan dari tiap RT.</p>
+                  <a
+                    href="dashboard.html"
+                    target="_blank"
+                    class="btn btn-warning mt-3"
+                    ><i class="fas fa-external-link-alt me-2"></i>Akses Layanan</a
+                  >
                 </div>
-                <div class="col-12 col-md-4 offset-md-2">
-                    <div class="top-simpul-card">
-                        <img src="/assets/img/bontang.svg" alt="Badan Penanggulangan Bencana" class="top-simpul-icon">
-                        <p class="top-simpul-name">Badan Penanggulangan Bencana Daerah</p>
-                    </div>
+                <div class="col-md-4 d-flex align-items-center justify-content-center">
+                  <img
+                    src="assets/img/aspirating.png"
+                    class="img-fluid"
+                    alt="Mobile App"
+                  />
                 </div>
-                <div class="col-12 col-md-4">
-                    <div class="top-simpul-card">
-                        <img src="/assets/img/bontang.svg" alt="Dinas Lingkungan Hidup" class="top-simpul-icon">
-                        <p class="top-simpul-name">Dinas Lingkungan Hidup</p>
-                    </div>
-                </div>  -->
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -161,108 +156,126 @@
           </a>
         </div>
         <div class="col-6 col-md-3">
-          <div class="department-card">
-            <img
-              src="assets/img/map.png"
-              alt="BATAS WILAYAH"
-              class="department-icon"
-            />
-            <p class="department-name">BATAS WILAYAH</p>
-          </div>
+          <a href="#" class="department-card-link">
+            <div class="department-card">
+              <img
+                src="assets/img/map.png"
+                alt="BATAS WILAYAH"
+                class="department-icon"
+              />
+              <p class="department-name">BATAS WILAYAH</p>
+            </div>
+          </a>
         </div>
         <div class="col-6 col-md-3">
-          <div class="department-card">
-            <img
-              src="assets/img/social-impact.png"
-              alt="SOSIAL"
-              class="department-icon"
-            />
-            <p class="department-name">SOSIAL</p>
-          </div>
+          <a href="#" class="department-card-link">
+            <div class="department-card">
+              <img
+                src="assets/img/social-impact.png"
+                alt="SOSIAL"
+                class="department-icon"
+              />
+              <p class="department-name">SOSIAL</p>
+            </div>
+          </a>
         </div>
         <div class="col-6 col-md-3">
-          <div class="department-card">
-            <img
-              src="assets/img/cardiogram.png"
-              alt="KESEHATAN"
-              class="department-icon"
-            />
-            <p class="department-name">KESEHATAN</p>
-          </div>
+          <a href="#" class="department-card-link">
+            <div class="department-card">
+              <img
+                src="assets/img/cardiogram.png"
+                alt="KESEHATAN"
+                class="department-icon"
+              />
+              <p class="department-name">KESEHATAN</p>
+            </div>
+          </a>
         </div>
         <div class="col-6 col-md-3">
-          <div class="department-card">
-            <img
-              src="assets/img/university.png"
-              alt="PENDIDIKAN"
-              class="department-icon"
-            />
-            <p class="department-name">PENDIDIKAN</p>
-          </div>
+          <a href="#" class="department-card-link">
+            <div class="department-card">
+              <img
+                src="assets/img/university.png"
+                alt="PENDIDIKAN"
+                class="department-icon"
+              />
+              <p class="department-name">PENDIDIKAN</p>
+            </div>
+          </a>
         </div>
         <div class="col-6 col-md-3">
-          <div class="department-card">
-            <img
-              src="assets/img/investment.png"
-              alt="PERIZINAN DAN INVESTASI"
-              class="department-icon"
-            />
-            <p class="department-name">PERIZINAN & INVESTASI</p>
-          </div>
+          <a href="#" class="department-card-link">
+            <div class="department-card">
+              <img
+                src="assets/img/investment.png"
+                alt="PERIZINAN DAN INVESTASI"
+                class="department-icon"
+              />
+              <p class="department-name">PERIZINAN & INVESTASI</p>
+            </div>
+          </a>
         </div>
         <div class="col-6 col-md-3">
-          <div class="department-card">
-            <img
-              src="assets/img/farm.png"
-              alt="PERUMAHAN DAN PEMUKIMAN"
-              class="department-icon"
-            />
-            <p class="department-name">PERUMAHAN & PEMUKIMAN</p>
-          </div>
+          <a href="#" class="department-card-link">
+            <div class="department-card">
+              <img
+                src="assets/img/farm.png"
+                alt="PERUMAHAN DAN PEMUKIMAN"
+                class="department-icon"
+              />
+              <p class="department-name">PERUMAHAN & PEMUKIMAN</p>
+            </div>
+          </a>
         </div>
         <div class="col-6 col-md-3">
-          <div class="department-card">
-            <img
-              src="assets/img/under-construction.png"
-              alt="PEKERJAAN UMUM DAN PENATAAN RUANG"
-              class="department-icon"
-            />
-            <p class="department-name">PEKERJAAN UMUM DAN PENATAAN RUANG</p>
-          </div>
+          <a href="#" class="department-card-link">
+            <div class="department-card">
+              <img
+                src="assets/img/under-construction.png"
+                alt="PEKERJAAN UMUM DAN PENATAAN RUANG"
+                class="department-icon"
+              />
+              <p class="department-name">PEKERJAAN UMUM DAN PENATAAN RUANG</p>
+            </div>
+          </a>
         </div>
         <div class="col-6 col-md-3">
-          <div class="department-card">
-            <img
-              src="assets/img/life-preserver.png"
-              alt="KEBENCANAAN DAN PENYELAMATAN "
-              class="department-icon"
-            />
-            <p class="department-name">KEBENCANAAN DAN PENYELAMATAN</p>
-          </div>
+          <a href="#" class="department-card-link">
+            <div class="department-card">
+              <img
+                src="assets/img/life-preserver.png"
+                alt="KEBENCANAAN DAN PENYELAMATAN "
+                class="department-icon"
+              />
+              <p class="department-name">KEBENCANAAN DAN PENYELAMATAN</p>
+            </div>
+          </a>
         </div>
         <div class="col-6 col-md-3">
-          <div class="department-card">
-            <img
-              src="assets/img/road.png"
-              alt="PERHUBUNGAN"
-              class="department-icon"
-            />
-            <p class="department-name">PERHUBUNGAN</p>
-          </div>
+          <a href="#" class="department-card-link">
+            <div class="department-card">
+              <img
+                src="assets/img/road.png"
+                alt="PERHUBUNGAN"
+                class="department-icon"
+              />
+              <p class="department-name">PERHUBUNGAN</p>
+            </div>
+          </a>
         </div>
         <div class="col-6 col-md-3">
-          <div class="department-card">
-            <img
-              src="assets/img/drugs.png"
-              alt="BADAN NARKOTIKA NASIONAL"
-              class="department-icon"
-            />
-            <p class="department-name">BADAN NARKOTIKA NASIONAL</p>
-          </div>
+          <a href="#" class="department-card-link">
+            <div class="department-card">
+              <img
+                src="assets/img/drugs.png"
+                alt="BADAN NARKOTIKA NASIONAL"
+                class="department-icon"
+              />
+              <p class="department-name">BADAN NARKOTIKA NASIONAL</p>
+            </div>
+          </a>
         </div>
       </div>
-
-      <!-- <button class="btn see-more-btn">Lihat lainnya</button> -->
     </div>
 
     <div class="ocean">
