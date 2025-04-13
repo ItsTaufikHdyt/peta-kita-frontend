@@ -20,8 +20,8 @@ Beberapa informasi penting tentang Bontang:
 - Memiliki sistem informasi geografis (SIG) yang dikelola melalui PetaKita
 `;
 
-// Function to send message to Gemini API
-async function sendToOpenRouter(message) {
+// Function to send message to OpenRouter API
+async function sendToOpenRouter(message, signal) {
   try {
     const response = await fetch(API_URL, {
       method: "POST",
@@ -57,6 +57,7 @@ ${bontangContext}`,
         temperature: 0.7,
         max_tokens: 1000,
       }),
+      signal: signal // Add signal to fetch options
     });
 
     if (!response.ok) {
@@ -74,6 +75,9 @@ ${bontangContext}`,
 
     return botResponse;
   } catch (error) {
+    if (error.name === 'AbortError') {
+      throw error; // Re-throw abort errors to handle them in the UI
+    }
     console.error("Error:", error);
     return "Maaf, terjadi kesalahan dalam memproses permintaan Anda. Silakan coba lagi nanti.";
   }
@@ -97,8 +101,41 @@ function typeMessage(element, text, callback) {
   type();
 }
 
+// Function to handle typing animation with stop capability
+function typeMessageWithStop(element, text, callback) {
+  let i = 0;
+  element.textContent = "";
+  let isStopped = false;
+  
+  function type() {
+    if (isStopped) return;
+    
+    if (i < text.length) {
+      element.textContent += text.charAt(i);
+      i++;
+      setTimeout(type, 30);
+    } else if (callback) {
+      callback();
+    }
+  }
+  
+  type();
+  
+  // Return a function to stop the typing animation
+  return function stopTyping() {
+    isStopped = true;
+    if (element.textContent.length < text.length) {
+      element.textContent += "...";
+    }
+    if (callback) {
+      callback();
+    }
+  };
+}
+
 // Export functions for use in main chatbot.js
 window.chatbotAPI = {
   sendToOpenRouter,
   typeMessage,
+  typeMessageWithStop,
 };

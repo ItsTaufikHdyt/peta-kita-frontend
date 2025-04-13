@@ -5,6 +5,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const chatMessages = document.getElementById("chat-messages");
   const userInput = document.getElementById("user-input");
   const sendButton = document.getElementById("send-message");
+  const stopButton = document.getElementById("stop-message");
+  
+  let currentAbortController = null;
+  let currentStopTyping = null;
 
   // Toggle chatbot
   chatToggle.addEventListener("click", function (e) {
@@ -17,14 +21,36 @@ document.addEventListener("DOMContentLoaded", function () {
     chatbot.classList.remove("active");
   });
 
+  // Stop generation function
+  function stopGeneration() {
+    if (currentAbortController) {
+      currentAbortController.abort();
+      currentAbortController = null;
+    }
+    
+    if (currentStopTyping) {
+      currentStopTyping();
+      currentStopTyping = null;
+    }
+    
+    // Hide stop button and show send button
+    stopButton.style.display = "none";
+    sendButton.style.display = "block";
+    
+    // Enable input
+    userInput.disabled = false;
+    userInput.focus();
+  }
+
   // Send message function
   async function sendMessage() {
     const message = userInput.value.trim();
     if (message) {
       // Disable input while processing
       userInput.disabled = true;
-      sendButton.disabled = true;
-
+      sendButton.style.display = "none";
+      stopButton.style.display = "block";
+      
       // Add user message
       addMessage(message, "user");
       userInput.value = "";
@@ -33,9 +59,11 @@ document.addEventListener("DOMContentLoaded", function () {
       const typingIndicator = addTypingIndicator();
 
       try {
-        // Get response from Gemini API
-        // const botResponse = await window.chatbotAPI.sendToOpenRouter(message);
-        const botResponse = await window.chatbotAPI.sendToDeepSeek(message);
+        // Create new AbortController for this request
+        currentAbortController = new AbortController();
+        
+        // Get response from OpenRouter API
+        const botResponse = await window.chatbotAPI.sendToOpenRouter(message, currentAbortController.signal);
 
         // Remove typing indicator
         typingIndicator.remove();
@@ -43,17 +71,39 @@ document.addEventListener("DOMContentLoaded", function () {
         // Add bot message with typing animation
         const botMessageDiv = addMessage("", "bot");
         const messageText = botMessageDiv.querySelector("p");
-        window.chatbotAPI.typeMessage(messageText, botResponse);
+        
+        // Start typing animation with stop capability
+        currentStopTyping = window.chatbotAPI.typeMessageWithStop(messageText, botResponse, () => {
+          // Animation complete callback
+          stopButton.style.display = "none";
+          sendButton.style.display = "block";
+          userInput.disabled = false;
+          userInput.focus();
+          
+          // Clear current controllers
+          currentAbortController = null;
+          currentStopTyping = null;
+        });
       } catch (error) {
         console.error("Error:", error);
         typingIndicator.remove();
-        addMessage("Maaf, terjadi kesalahan. Silakan coba lagi.", "bot");
+        
+        if (error.name === 'AbortError') {
+          addMessage("Pesan dihentikan.", "bot");
+        } else {
+          addMessage("Maaf, terjadi kesalahan. Silakan coba lagi.", "bot");
+        }
+        
+        // Reset state
+        stopButton.style.display = "none";
+        sendButton.style.display = "block";
+        userInput.disabled = false;
+        userInput.focus();
+        
+        // Clear current controllers
+        currentAbortController = null;
+        currentStopTyping = null;
       }
-
-      // Re-enable input
-      userInput.disabled = false;
-      sendButton.disabled = false;
-      userInput.focus();
     }
   }
 
@@ -105,6 +155,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Send message on button click
   sendButton.addEventListener("click", sendMessage);
+
+  // Stop generation on stop button click
+  stopButton.addEventListener("click", stopGeneration);
 
   // Send message on Enter key
   userInput.addEventListener("keypress", function (e) {

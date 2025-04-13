@@ -696,6 +696,15 @@ body::before {
   cursor: not-allowed;
 }
 
+/* Stop button specific styles */
+#stop-message {
+  background: #e74c3c;
+}
+
+#stop-message:hover:not(:disabled) {
+  background: #c0392b;
+}
+
 @keyframes messageAppear {
   from {
     opacity: 0;
