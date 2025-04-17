@@ -101,7 +101,7 @@ body::before {
 }
 
 /* Floating icons style update for ocean theme */
-.floating-icon {
+/* .floating-icon {
   position: absolute;
   opacity: 0.6;
   color: rgb(51, 94, 122);
@@ -109,6 +109,27 @@ body::before {
   transition: transform 0.3s ease, opacity 0.3s ease;
   z-index: -1;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.floating-icon i {
+  font-size: 1.5em;
+} */
+.floating-icon {
+  position: fixed;
+  opacity: 0.8;
+  color: white;
+  animation: float 8s ease-in-out infinite;
+  transition: all 0.3s ease;
+  z-index: -1;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+  width: 50px;
+  height: 50px;
 }
 
 .floating-icon i {
@@ -187,6 +208,7 @@ body::before {
   color: #ffffff;
   font-weight: bold;
   text-align: center;
+  font-family: "Poetsen One", sans-serif;
   margin: 20px 0;
   font-size: 28px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
@@ -213,7 +235,7 @@ body::before {
   color: #ffffff; /* Meningkatkan ukuran font agar lebih mudah dibaca */
   line-height: 1.6; /* Memberikan jarak antar baris agar lebih nyaman dibaca */
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Menambah ketebalan bayangan untuk kontras yang lebih baik */
-  font-family: 'Arial', sans-serif; /* Menambahkan font yang lebih modern dan bersih */
+  font-family: 'Truculenta', sans-serif; /* Menambahkan font yang lebih modern dan bersih */
   padding: 10px; /* Memberikan sedikit ruang di sekitar teks */
 }
 
@@ -228,8 +250,9 @@ body::before {
 
 .icon-1 {
   top: 15%;
-  left: 5%;
+  left: 18%;
   animation-delay: 0s;
+  background: rgba(255, 255, 255, 0.3);
 }
 
 .icon-2 {
@@ -240,25 +263,25 @@ body::before {
 
 .icon-3 {
   bottom: 20%;
-  left: 8%;
+  left: 4%;
   animation-delay: 2s;
 }
 
 .icon-4 {
-  bottom: 10%;
-  right: 20%;
+  bottom: 15%;
+  right: 10%;
   animation-delay: 3s;
 }
 
 .icon-5 {
-  top: 30%;
+  top: 23%;
   left: 35%;
   animation-delay: 4s;
 }
 
 .icon-6 {
-  top: 60%;
-  right: 5%;
+  top: 55%;
+  right: 3%;
   animation-delay: 5s;
 }
 
@@ -283,39 +306,15 @@ body::before {
 
 /* Additional floating icon positions */
 .icon-7 {
-  top: 40%;
-  left: 15%;
+  top: 35%;
+  left: 8%;
   animation-delay: 1.5s;
 }
 
 .icon-8 {
-  top: 70%;
-  right: 15%;
+  top: 18%;
+  right: 7%;
   animation-delay: 2.5s;
-}
-
-.icon-9 {
-  top: 20%;
-  left: 45%;
-  animation-delay: 3.5s;
-}
-
-.icon-10 {
-  bottom: 30%;
-  right: 35%;
-  animation-delay: 4.5s;
-}
-
-.icon-11 {
-  top: 50%;
-  left: 25%;
-  animation-delay: 5.5s;
-}
-
-.icon-12 {
-  bottom: 40%;
-  right: 45%;
-  animation-delay: 6.5s;
 }
 
 /* Particle effect */
@@ -459,7 +458,7 @@ body::before {
 .chat-button {
   position: fixed;
   bottom: 20px;
-  right: 80px;
+  right: 30px;
   width: 50px;
   height: 50px;
   background-color: #045b95;
@@ -484,7 +483,7 @@ body::before {
   bottom: 100px;
   right: 30px;
   width: 350px;
-  height: 500px;
+  height: 600px;
   background: rgba(255, 255, 255, 0.95);
   border-radius: 20px;
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);

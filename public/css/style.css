@@ -23,7 +23,7 @@ body {
 }
 
 body {
-  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-mid), var(--gradient-end));
+  background: linear-gradient(180deg, #3D90D7, #7AC6D2, #B5FCCD);
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   padding-top: 100px;
   position: relative;
@@ -132,13 +132,6 @@ body {
   100% {
     transform: translateX(-50%);
   }
-}
-
-/* Main content container with padding to prevent overlap with waves */
-.main-content-container {
-  min-height: calc(100vh - 80px);
-  padding-bottom: 80px;
-  /* Match ocean height */
 }
 
 .nav-breadcrumb {
@@ -411,9 +404,12 @@ body {
 }
 
 .footer {
-  padding: 40px 0 20px 0;
-  margin-top: 40px;
+  padding: 60px 0 30px 0;
+  margin-top: 60px;
   position: relative;
+  background: #49638573;
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .footer:before {
@@ -426,39 +422,152 @@ body {
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
 }
 
+.footer-brand {
+  margin-bottom: 20px;
+}
+
+.footer-title {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  position: relative;
+  display: inline-block;
+}
+
+.footer-title:after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  border-radius: 2px;
+}
+
 .footer-text {
   color: #ffffff;
   font-size: 15px;
   line-height: 1.6;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
 }
 
 .footer-divider {
-  width: 60%;
-  margin: 20px auto;
-  color: rgba(255, 255, 255, 0.3);
+  width: 100%;
+  margin: 30px auto;
+  color: rgba(255, 255, 255, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .copyright {
   color: #ffffff;
-  font-size: 12px;
-  text-align: center;
+  font-size: 14px;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  font-size: 15px;
+  display: inline-block;
+  position: relative;
+}
+
+.footer-links a:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  bottom: 0;
+  left: 0;
+  transition: width var(--transition-fast);
+}
+
+.footer-links a:hover {
+  color: var(--primary);
+  transform: translateX(5px);
+}
+
+.footer-links a:hover:after {
+  width: 100%;
+}
+
 .social-links a {
-  margin-right: 15px;
   color: #ffffff;
   text-decoration: none;
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   transition: all var(--transition-fast);
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  font-size: 15px;
 }
 
 .social-links a:hover {
   transform: translateX(5px);
-  color: var(--primary-dark);
+  color: var(--primary);
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.social-icon:hover {
+  background: var(--primary);
+  color: #ffffff;
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.newsletter .form-control {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  border-radius: 30px 0 0 30px;
+  padding: 10px 15px;
+}
+
+.newsletter .form-control::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.newsletter .btn-primary {
+  background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+  border: none;
+  border-radius: 0 30px 30px 0;
+  padding: 10px 15px;
+}
+
+.newsletter .btn-primary:hover {
+  background: linear-gradient(90deg, var(--primary-dark), var(--primary));
 }
 
 .scroll-top {
@@ -748,5 +857,26 @@ body {
     width: 35px;
     height: 35px;
     font-size: 14px;
+  }
+  
+  .footer {
+    padding: 40px 0 20px 0;
+  }
+  
+  .footer-title {
+    font-size: 16px;
+  }
+  
+  .footer-text {
+    font-size: 14px;
+  }
+  
+  .social-icons {
+    gap: 10px;
+  }
+  
+  .social-icon {
+    width: 35px;
+    height: 35px;
   }
 }

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Gallery - Peta Kita</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="public/css/style.css">
+    <style>
+        .video-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 16px;
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+            transition: all var(--transition-medium);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(5px);
+            margin-bottom: 30px;
+        }
+
+        .video-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--card-shadow-hover);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .video-thumbnail {
+            position: relative;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            background-color: #000;
+            overflow: hidden;
+        }
+
+        .video-thumbnail img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-medium);
+        }
+
+        .video-card:hover .video-thumbnail img {
+            transform: scale(1.05);
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 24px;
+            transition: all var(--transition-fast);
+            z-index: 2;
+        }
+
+        .video-card:hover .play-button {
+            background: var(--primary);
+            color: white;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .video-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .video-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+            transition: color var(--transition-fast);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .video-date {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .video-link {
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+            color: white;
+            border-radius: 30px;
+            padding: 8px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+            transition: all var(--transition-fast);
+            border: none;
+            text-decoration: none;
+            align-self: flex-start;
+            margin-top: auto;
+        }
+
+        .video-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            background: linear-gradient(90deg, var(--primary-dark), var(--primary));
+            color: white;
+        }
+
+        .video-filters {
+            margin-bottom: 30px;
+        }
+
+        .filter-button {
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--primary);
+            border-radius: 30px;
+            padding: 8px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all var(--transition-fast);
+        }
+
+        .filter-button:hover,
+        .filter-button.active {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Navbar -->
+    <div class="navbar-container">
+        <div class="container">
+          <nav class="navbar navbar-expand-lg" id="mainNav">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">
+                <img
+                  src="assets/img/logo/bontang.svg"
+                  alt="bontang Satu Logo"
+                  class="img-fluid"
+                />
+              </a>
+              <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav"
+              >
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div
+                class="collapse navbar-collapse justify-content-end"
+                id="navbarNav"
+              >
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="index.html">Beranda</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Bapperida</a>
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      class="nav-link"
+                      href="https://satudata.bontangkota.go.id/"
+                      target="_blank"
+                      >Satu Data</a
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Tentang</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="container">
+            <h1 class="section-title">Video Gallery</h1>
+            
+            <!-- Video Grid -->
+            <div class="row">
+                <!-- Video Card 1 -->
+                <div class="col-md-4">
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <img src="https://via.placeholder.com/640x360" alt="Video Thumbnail">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="video-content">
+                            <h3 class="video-title">How to Use Peta Kita Platform</h3>
+                            <div class="video-date">
+                                <i class="far fa-calendar-alt"></i> March 15, 2024
+                            </div>
+                            <a href="#" class="video-link">Watch Video</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Card 2 -->
+                <div class="col-md-4">
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <img src="https://via.placeholder.com/640x360" alt="Video Thumbnail">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="video-content">
+                            <h3 class="video-title">Advanced Mapping Techniques</h3>
+                            <div class="video-date">
+                                <i class="far fa-calendar-alt"></i> March 10, 2024
+                            </div>
+                            <a href="#" class="video-link">Watch Video</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Card 3 -->
+                <div class="col-md-4">
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <img src="https://via.placeholder.com/640x360" alt="Video Thumbnail">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="video-content">
+                            <h3 class="video-title">Data Visualization Best Practices</h3>
+                            <div class="video-date">
+                                <i class="far fa-calendar-alt"></i> March 5, 2024
+                            </div>
+                            <a href="#" class="video-link">Watch Video</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination-container text-center mt-5">
+                <nav aria-label="Video pagination">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <i class="fas fa-chevron-left"></i>
+                            </a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ocean Wave Effect -->
+    <div class="ocean">
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+              <div class="footer-brand">
+                <img
+                  src="assets/img/logo/bontang.svg"
+                  height="60"
+                  width="60"
+                  alt="bontang Satu Logo"
+                  class="img-fluid mb-3"
+                />
+                <h5 class="footer-title">Peta Kita</h5>
+                <p class="footer-text">
+                  Situs ini menyediakan informasi geospasial terkait wilayah bontang
+                  dan membantu masyarakat dalam mengakses data peta dan visualisasi
+                  data untuk perencanaan, analisis, dan informasi publik.
+                </p>
+              </div>
+            </div>
+            <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+              <h5 class="footer-title">Menu</h5>
+              <ul class="footer-links">
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="catalog.html">Katalog</a></li>
+                <li><a href="category.html">Kategori</a></li>
+                <li><a href="video.html">Video</a></li>
+                <li><a href="award.html">Penghargaan</a></li>
+              </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+              <h5 class="footer-title">Hubungi Kami</h5>
+              <div class="social-links">
+                <a href="#"><i class="fas fa-envelope me-2"></i> bontang.satu@bontang.go.id</a>
+                <a href="#"><i class="fas fa-phone me-2"></i> (021) 123-4567</a>
+                <a href="#"><i class="fas fa-map-marker-alt me-2"></i> Balai Kota bontang, Jl. Medan Merdeka Selatan</a>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <h5 class="footer-title">Ikuti Kami</h5>
+              <div class="social-icons">
+                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+              </div>
+              <div class="newsletter mt-4">
+                <h5 class="footer-title">Newsletter</h5>
+                <p class="footer-text small">Dapatkan update terbaru dari kami</p>
+                <div class="input-group">
+                  <input type="email" class="form-control" placeholder="Email Anda">
+                  <button class="btn btn-primary" type="button"><i class="fas fa-paper-plane"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr class="footer-divider" />
+          <div class="row">
+            <div class="col-md-6">
+              <p class="copyright">© 2023 bontang Satu. Semua Hak Dilindungi.</p>
+            </div>
+            <div class="col-md-6 text-md-end">
+              <div class="footer-links small">
+                <a href="#">Kebijakan Privasi</a>
+                <a href="#">Syarat & Ketentuan</a>
+                <a href="#">Peta Situs</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    <!-- Scroll to Top Button -->
+    <a href="#" class="scroll-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('navbar-scrolled');
+            } else {
+                navbar.classList.remove('navbar-scrolled');
+            }
+        });
+
+        // Filter buttons functionality
+        document.querySelectorAll('.filter-button').forEach(button => {
+            button.addEventListener('click', function() {
+                document.querySelectorAll('.filter-button').forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

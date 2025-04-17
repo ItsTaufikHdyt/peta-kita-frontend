@@ -1,6 +1,6 @@
 // Configuration
 const OPENROUTER_API_KEY =
-  ""; // Replace with your actual API key
+  "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"; // Replace with your actual API key
 const API_URL = "https://openrouter.ai/api/v1/chat/completions";
 
 // Chat history to maintain context

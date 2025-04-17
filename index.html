@@ -15,6 +15,9 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
     <link rel="stylesheet" href="public/css/main-style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
   </head>
 
   <body>
@@ -53,19 +56,6 @@
     <div class="floating-icon icon-8">
       <i class="fas fa-sailboat fa-2x"></i>
     </div>
-    <div class="floating-icon icon-9">
-      <i class="fas fa-umbrella-beach fa-2x"></i>
-    </div>
-    <div class="floating-icon icon-10">
-      <i class="fas fa-cloud fa-2x"></i>
-    </div>
-    <div class="floating-icon icon-11">
-      <i class="fas fa-sun fa-2x"></i>
-    </div>
-    <div class="floating-icon icon-12">
-      <i class="fas fa-moon fa-2x"></i>
-    </div>
-
     <!-- Main Content Container -->
     <div class="main-content-container">
       <!-- Navbar -->
@@ -183,12 +173,23 @@
             </div>
 
             <div class="icon-button">
+              <a href="award.html" class="menu-button-link">
+                <div class="menu-button mb-2">
+                  <i class="fas fa-trophy"></i> Penghargaan
+                </div>
+              </a>
+              <a href="video.html" class="menu-button-link">
+                <div class="menu-button mb-2">
+                  <i class="fas fa-play"></i> Video
+                </div>
+              </a>
               <a href="simpuljaringan.html" class="menu-button-link">
                 <div class="menu-button mb-2">
                   <i class="fas fa-info-circle"></i> Tentang
                 </div>
               </a>
             </div>
+
           </div>
         </div>
       </div>
@@ -235,8 +236,8 @@
     <!-- Bubbles Script - Increased number of bubbles -->
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        const numBubbles = 25; // Increased number of bubbles
         const numParticles = 15; // Number of particles
+        const numBubbles = 25; // Increased number of bubbles
 
         // Membuat container untuk semua bubble yang dibatasi pada viewport
         const bubbleContainer = document.createElement("div");
@@ -249,35 +250,6 @@
         bubbleContainer.style.overflow = "hidden";
         bubbleContainer.style.pointerEvents = "none";
         bubbleContainer.style.zIndex = "1000";
-
-        // Create bubbles
-        for (let i = 0; i < numBubbles; i++) {
-          const bubble = document.createElement("span");
-          bubble.className = "bubble";
-
-          // Ukuran random antara 8px dan 30px (variasi ukuran lebih besar)
-          const size = Math.random() * 22 + 8;
-          bubble.style.width = size + "px";
-          bubble.style.height = size + "px";
-
-          // Posisi horizontal random
-          bubble.style.left = Math.random() * 100 + "%";
-
-          // Posisi awal random di bagian bawah (dalam viewport)
-          bubble.style.bottom = Math.random() * 30 + "%";
-
-          // Durasi animasi random (lebih bervariasi)
-          const duration = Math.random() * 8 + 4;
-          bubble.style.animationDuration = duration + "s";
-
-          // Delay animasi random
-          bubble.style.animationDelay = Math.random() * 8 + "s";
-
-          // Opacity random untuk efek lebih natural
-          bubble.style.opacity = Math.random() * 0.5 + 0.3;
-
-          bubbleContainer.appendChild(bubble);
-        }
 
         // Create particles
         for (let i = 0; i < numParticles; i++) {
