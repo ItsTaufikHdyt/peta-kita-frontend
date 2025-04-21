@@ -16,223 +16,6 @@
     />
     <!-- Custom CSS -->
     <link rel="stylesheet" href="public/css/style.css" />
-    <style>
-      :root {
-        --primary: #0056b3;
-        --primary-dark: #004085;
-        --secondary: #28a745;
-        --light: #f8f9fa;
-        --dark: #343a40;
-        --accent: #ffc107;
-      }
-
-      body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #f5f5f5;
-        color: #333;
-      }
-
-      .award-container {
-        max-width: 1200px;
-        margin: 50px auto;
-        padding: 0 20px;
-      }
-
-      .award-header {
-        text-align: center;
-        margin-bottom: 40px;
-      }
-
-      .award-title {
-        color: var(--primary-dark);
-        font-weight: 700;
-        margin-bottom: 10px;
-        position: relative;
-        display: inline-block;
-      }
-
-      .award-title:after {
-        content: "";
-        position: absolute;
-        bottom: -10px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 80px;
-        height: 4px;
-        background: linear-gradient(90deg, var(--primary), var(--secondary));
-        border-radius: 2px;
-      }
-
-      .award-subtitle {
-        color: #666;
-        font-size: 1.2rem;
-        margin-top: 20px;
-      }
-
-      .award-card {
-        background-color: white;
-        border-radius: 15px;
-        overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        margin-bottom: 30px;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-
-      .award-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-      }
-
-      .award-image {
-        height: 300px;
-        background-size: cover;
-        background-position: center;
-        position: relative;
-      }
-
-      .award-image:before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(
-          to bottom,
-          rgba(0, 0, 0, 0.1),
-          rgba(0, 0, 0, 0.4)
-        );
-        transition: all 0.3s ease;
-      }
-
-      .award-card:hover .award-image:before {
-        background: linear-gradient(
-          to bottom,
-          rgba(0, 0, 0, 0.2),
-          rgba(0, 0, 0, 0.5)
-        );
-      }
-
-      .award-category {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        background: rgba(255, 255, 255, 0.9);
-        color: var(--primary);
-        padding: 8px 15px;
-        border-radius: 30px;
-        font-size: 0.9rem;
-        font-weight: 600;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        z-index: 1;
-        transition: all 0.3s ease;
-      }
-
-      .award-card:hover .award-category {
-        background: var(--primary);
-        color: white;
-      }
-
-      .award-date {
-        position: absolute;
-        bottom: 20px;
-        left: 20px;
-        background: rgba(0, 0, 0, 0.7);
-        color: white;
-        padding: 8px 15px;
-        border-radius: 30px;
-        font-size: 0.9rem;
-        z-index: 1;
-      }
-
-      .award-content {
-        padding: 25px;
-      }
-
-      .award-content h3 {
-        color: var(--primary-dark);
-        font-weight: 700;
-        margin-bottom: 15px;
-      }
-
-      .award-content p {
-        color: #666;
-        line-height: 1.6;
-      }
-
-      .award-footer {
-        padding: 15px 25px;
-        background-color: #f8f9fa;
-        border-top: 1px solid #eee;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .award-link {
-        color: var(--primary);
-        text-decoration: none;
-        font-weight: 600;
-        transition: all 0.3s ease;
-      }
-
-      .award-link:hover {
-        color: var(--primary-dark);
-      }
-
-      .award-icon {
-        margin-right: 5px;
-      }
-
-      .award-badge {
-        display: inline-flex;
-        align-items: center;
-        background: linear-gradient(90deg, var(--primary), var(--primary-dark));
-        color: white;
-        padding: 5px 15px;
-        border-radius: 20px;
-        font-size: 0.8rem;
-        font-weight: 600;
-      }
-
-      .award-badge i {
-        margin-right: 5px;
-      }
-
-      .award-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-        gap: 30px;
-      }
-
-      @media (max-width: 768px) {
-        .award-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .award-image {
-          height: 250px;
-        }
-      }
-
-      .back-button {
-        display: inline-block;
-        margin-bottom: 20px;
-        color: var(--primary);
-        text-decoration: none;
-        font-weight: 600;
-        transition: all 0.3s ease;
-      }
-
-      .back-button:hover {
-        color: var(--primary-dark);
-        transform: translateX(-5px);
-      }
-
-      .back-button i {
-        margin-right: 5px;
-      }
-    </style>
   </head>
   <body>
     <!-- Fixed Navbar -->
@@ -345,19 +128,20 @@
           <div
             class="award-image"
             style="
-              background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+              background-image: url('https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             "
           >
-            <span class="award-category">Layanan Publik</span>
+          
             <span class="award-date"
-              ><i class="far fa-calendar-alt"></i> 3 Maret 2023</span
+              ><i class="far fa-calendar-alt"></i> 15 Juni 2023</span
             >
           </div>
           <div class="award-content">
-            <h3>Sertifikasi ISO 27001</h3>
+            <h3>Penghargaan Inovasi Digital Terbaik</h3>
             <p>
-              Sertifikasi keamanan informasi yang menunjukkan komitmen kami
-              dalam melindungi data pengguna dan menjaga kerahasiaan informasi.
+              Penghargaan ini diberikan atas inovasi dalam pengembangan platform
+              peta digital yang memudahkan akses informasi geografis bagi
+              masyarakat.
             </p>
           </div>
           <div class="award-footer">
@@ -365,7 +149,7 @@
               <i class="fas fa-external-link-alt award-icon"></i> Lihat Detail
             </a>
             <span class="award-badge">
-              <i class="fas fa-award"></i> Internasional
+              <i class="fas fa-award"></i> Nasional
             </span>
           </div>
         </div>
@@ -375,50 +159,20 @@
           <div
             class="award-image"
             style="
-              background-image: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+              background-image: url('https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             "
           >
-            <span class="award-category">Pengembangan SDM</span>
+          
             <span class="award-date"
-              ><i class="far fa-calendar-alt"></i> 22 Oktober 2022</span
+              ><i class="far fa-calendar-alt"></i> 15 Juni 2023</span
             >
           </div>
           <div class="award-content">
-            <h3>Penghargaan Perusahaan Ramah Lingkungan</h3>
+            <h3>Penghargaan Inovasi Digital Terbaik</h3>
             <p>
-              Penghargaan ini diberikan atas komitmen kami dalam mengurangi
-              dampak lingkungan melalui inisiatif digitalisasi dan pengurangan
-              penggunaan kertas.
-            </p>
-          </div>
-          <div class="award-footer">
-            <a href="#" class="award-link">
-              <i class="fas fa-external-link-alt award-icon"></i> Lihat Detail
-            </a>
-            <span class="award-badge">
-              <i class="fas fa-award"></i> Regional
-            </span>
-          </div>
-        </div>
-
-        <!-- Award 4 -->
-        <div class="award-card">
-          <div
-            class="award-image"
-            style="
-              background-image: url('https://images.unsplash.com/photo-1552588376-fdf76f2f783e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            "
-          >
-            <span class="award-category">Teknologi Informasi</span>
-            <span class="award-date"
-              ><i class="far fa-calendar-alt"></i> 5 Agustus 2022</span
-            >
-          </div>
-          <div class="award-content">
-            <h3>Penghargaan Aplikasi Terbaik</h3>
-            <p>
-              Penghargaan ini diberikan atas pengembangan aplikasi peta digital
-              yang user-friendly dan memberikan nilai tambah bagi pengguna.
+              Penghargaan ini diberikan atas inovasi dalam pengembangan platform
+              peta digital yang memudahkan akses informasi geografis bagi
+              masyarakat.
             </p>
           </div>
           <div class="award-footer">
@@ -430,68 +184,7 @@
             </span>
           </div>
         </div>
-
-        <!-- Award 5 -->
-        <div class="award-card">
-          <div
-            class="award-image"
-            style="
-              background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            "
-          >
-            <span class="award-category">Kolaborasi</span>
-            <span class="award-date"
-              ><i class="far fa-calendar-alt"></i> 12 Januari 2022</span
-            >
-          </div>
-          <div class="award-content">
-            <h3>Penghargaan Kerjasama Antar Instansi</h3>
-            <p>
-              Penghargaan ini diberikan atas keberhasilan kolaborasi dengan
-              berbagai instansi pemerintah dalam pengembangan sistem informasi
-              geografis terintegrasi.
-            </p>
-          </div>
-          <div class="award-footer">
-            <a href="#" class="award-link">
-              <i class="fas fa-external-link-alt award-icon"></i> Lihat Detail
-            </a>
-            <span class="award-badge">
-              <i class="fas fa-award"></i> Regional
-            </span>
-          </div>
-        </div>
-
-        <!-- Award 6 -->
-        <div class="award-card">
-          <div
-            class="award-image"
-            style="
-              background-image: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            "
-          >
-            <span class="award-category">Inovasi</span>
-            <span class="award-date"
-              ><i class="far fa-calendar-alt"></i> 30 November 2021</span
-            >
-          </div>
-          <div class="award-content">
-            <h3>Sertifikasi Kompetensi Tim</h3>
-            <p>
-              Sertifikasi ini menunjukkan bahwa tim pengembang kami telah
-              memenuhi standar kompetensi dalam pengembangan aplikasi berbasis
-              geografis.
-            </p>
-          </div>
-          <div class="award-footer">
-            <a href="#" class="award-link">
-              <i class="fas fa-external-link-alt award-icon"></i> Lihat Detail
-            </a>
-            <span class="award-badge">
-              <i class="fas fa-award"></i> Nasional
-            </span>
-          </div>
-        </div>
+        
       </div>
     </div>
     <!-- Ocean Waves Background -->

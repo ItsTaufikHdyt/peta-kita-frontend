@@ -7,144 +7,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="public/css/style.css">
-    <style>
-        .video-card {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 16px;
-            box-shadow: var(--card-shadow);
-            overflow: hidden;
-            transition: all var(--transition-medium);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(5px);
-            margin-bottom: 30px;
-        }
-
-        .video-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--card-shadow-hover);
-            background: rgba(255, 255, 255, 0.95);
-        }
-
-        .video-thumbnail {
-            position: relative;
-            padding-top: 56.25%; /* 16:9 Aspect Ratio */
-            background-color: #000;
-            overflow: hidden;
-        }
-
-        .video-thumbnail img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform var(--transition-medium);
-        }
-
-        .video-card:hover .video-thumbnail img {
-            transform: scale(1.05);
-        }
-
-        .play-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 60px;
-            height: 60px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            font-size: 24px;
-            transition: all var(--transition-fast);
-            z-index: 2;
-        }
-
-        .video-card:hover .play-button {
-            background: var(--primary);
-            color: white;
-            transform: translate(-50%, -50%) scale(1.1);
-        }
-
-        .video-content {
-            padding: 20px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .video-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--primary-dark);
-            margin-bottom: 10px;
-            transition: color var(--transition-fast);
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .video-date {
-            color: #666;
-            font-size: 14px;
-            margin-bottom: 15px;
-        }
-
-        .video-link {
-            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
-            color: white;
-            border-radius: 30px;
-            padding: 8px 20px;
-            font-size: 14px;
-            font-weight: 600;
-            text-align: center;
-            transition: all var(--transition-fast);
-            border: none;
-            text-decoration: none;
-            align-self: flex-start;
-            margin-top: auto;
-        }
-
-        .video-link:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-            background: linear-gradient(90deg, var(--primary-dark), var(--primary));
-            color: white;
-        }
-
-        .video-filters {
-            margin-bottom: 30px;
-        }
-
-        .filter-button {
-            background: rgba(255, 255, 255, 0.9);
-            color: var(--primary);
-            border-radius: 30px;
-            padding: 8px 20px;
-            font-size: 14px;
-            font-weight: 600;
-            margin-right: 10px;
-            margin-bottom: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            transition: all var(--transition-fast);
-        }
-
-        .filter-button:hover,
-        .filter-button.active {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-        }
-    </style>
 </head>
 <body>
     <!-- Fixed Navbar -->
@@ -205,57 +67,74 @@
             <div class="row">
                 <!-- Video Card 1 -->
                 <div class="col-md-4">
-                    <div class="video-card">
+                    <div class="video-card" data-video-id="0m9nIPhA8yc">
                         <div class="video-thumbnail">
-                            <img src="https://via.placeholder.com/640x360" alt="Video Thumbnail">
+                            <img src="https://img.youtube.com/vi/0m9nIPhA8yc/maxresdefault.jpg" alt="Video Thumbnail">
                             <div class="play-button">
                                 <i class="fas fa-play"></i>
                             </div>
+                            <div class="video-duration">3:32</div>
                         </div>
                         <div class="video-content">
                             <h3 class="video-title">How to Use Peta Kita Platform</h3>
                             <div class="video-date">
                                 <i class="far fa-calendar-alt"></i> March 15, 2024
                             </div>
-                            <a href="#" class="video-link">Watch Video</a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Video Card 2 -->
                 <div class="col-md-4">
-                    <div class="video-card">
+                    <div class="video-card" data-video-id="TpeVVNbVVlU">
                         <div class="video-thumbnail">
-                            <img src="https://via.placeholder.com/640x360" alt="Video Thumbnail">
+                            <img src="https://img.youtube.com/vi/TpeVVNbVVlU/maxresdefault.jpg" alt="Video Thumbnail">
                             <div class="play-button">
                                 <i class="fas fa-play"></i>
                             </div>
+                            <div class="video-duration">4:15</div>
                         </div>
                         <div class="video-content">
                             <h3 class="video-title">Advanced Mapping Techniques</h3>
                             <div class="video-date">
                                 <i class="far fa-calendar-alt"></i> March 10, 2024
                             </div>
-                            <a href="#" class="video-link">Watch Video</a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Video Card 3 -->
                 <div class="col-md-4">
-                    <div class="video-card">
+                    <div class="video-card" data-video-id="NyPZSj_mAWU">
                         <div class="video-thumbnail">
-                            <img src="https://via.placeholder.com/640x360" alt="Video Thumbnail">
+                            <img src="https://img.youtube.com/vi/NyPZSj_mAWU/maxresdefault.jpg" alt="Video Thumbnail">
                             <div class="play-button">
                                 <i class="fas fa-play"></i>
                             </div>
+                            <div class="video-duration">5:20</div>
                         </div>
                         <div class="video-content">
                             <h3 class="video-title">Data Visualization Best Practices</h3>
                             <div class="video-date">
                                 <i class="far fa-calendar-alt"></i> March 5, 2024
                             </div>
-                            <a href="#" class="video-link">Watch Video</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Modal -->
+            <div class="modal fade video-modal" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="videoModalLabel">Video Title</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="video-container">
+                                <iframe id="youtubePlayer" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -379,6 +258,30 @@
             } else {
                 navbar.classList.remove('navbar-scrolled');
             }
+        });
+
+        // Video Modal Functionality
+        const videoModal = new bootstrap.Modal(document.getElementById('videoModal'));
+        const youtubePlayer = document.getElementById('youtubePlayer');
+        const modalTitle = document.getElementById('videoModalLabel');
+
+        document.querySelectorAll('.video-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const videoId = this.dataset.videoId;
+                const videoTitle = this.querySelector('.video-title').textContent;
+                
+                // Update modal content
+                modalTitle.textContent = videoTitle;
+                youtubePlayer.src = `https://www.youtube.com/embed/${videoId}`;
+                
+                // Show modal
+                videoModal.show();
+            });
+        });
+
+        // Reset video when modal is closed
+        document.getElementById('videoModal').addEventListener('hidden.bs.modal', function () {
+            youtubePlayer.src = '';
         });
 
         // Filter buttons functionality
