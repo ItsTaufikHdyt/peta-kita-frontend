@@ -1246,3 +1246,252 @@ body {
 .back-button i {
   margin-right: 5px;
 }
+
+/* About Page Styles */
+.about-section {
+  padding: 50px 0;
+  position: relative;
+}
+
+.about-image-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: var(--card-shadow);
+}
+
+.about-image {
+  width: 100%;
+  height: auto;
+  transition: transform var(--transition-medium);
+}
+
+.about-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.3));
+  border-radius: 16px;
+}
+
+.about-content {
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 16px;
+  box-shadow: var(--card-shadow);
+  height: 100%;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.about-subtitle {
+  color: var(--primary-dark);
+  font-weight: 700;
+  margin-bottom: 20px;
+  position: relative;
+  display: inline-block;
+}
+
+.about-subtitle:after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  border-radius: 2px;
+}
+
+.about-description {
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+}
+
+/* Mission Cards */
+.mission-container {
+  margin-top: 30px;
+}
+
+.mission-card {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 16px;
+  padding: 30px 20px;
+  text-align: center;
+  height: 100%;
+  transition: all var(--transition-medium);
+  box-shadow: var(--card-shadow);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.mission-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--card-shadow-hover);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.mission-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 20px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 30px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: all var(--transition-medium);
+}
+
+.mission-card:hover .mission-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.mission-title {
+  color: var(--primary-dark);
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.mission-text {
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Contact Info Cards */
+.contact-info-container {
+  margin-top: 30px;
+}
+
+.contact-info-card {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 16px;
+  padding: 30px 20px;
+  text-align: center;
+  height: 100%;
+  transition: all var(--transition-medium);
+  box-shadow: var(--card-shadow);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.contact-info-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--card-shadow-hover);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.contact-info-icon {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 20px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 25px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: all var(--transition-medium);
+}
+
+.contact-info-card:hover .contact-info-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.contact-info-title {
+  color: var(--primary-dark);
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.contact-info-text {
+  color: #666;
+  line-height: 1.8;
+  margin-bottom: 0;
+}
+
+/* Team Cards */
+.team-container {
+  margin-top: 30px;
+}
+
+.team-card {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 16px;
+  overflow: hidden;
+  height: 100%;
+  transition: all var(--transition-medium);
+  box-shadow: var(--card-shadow);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.team-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--card-shadow-hover);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.team-image {
+  position: relative;
+  overflow: hidden;
+  padding-top: 100%; /* 1:1 Aspect Ratio */
+}
+
+.team-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-medium);
+}
+
+.team-card:hover .team-image img {
+  transform: scale(1.05);
+}
+
+.team-info {
+  padding: 20px;
+  text-align: center;
+}
+
+.team-name {
+  color: var(--primary-dark);
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.team-position {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
+/* Responsive adjustments for about page */
+@media (max-width: 768px) {
+  .about-content {
+    margin-top: 20px;
+  }
+  
+  .mission-card, .contact-info-card {
+    margin-bottom: 20px;
+  }
+  
+  .team-card {
+    margin-bottom: 20px;
+  }
+}
