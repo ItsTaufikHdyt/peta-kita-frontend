@@ -1,0 +1,1586 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bontang Satu Festival 2025</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
+      }
+
+      /* Ocean theme colors */
+      :root {
+        --primary: #006994;
+        --secondary: #00a8e8;
+        --accent: #7fdbff;
+        --light: #e6f7ff;
+        --dark: #003b5c;
+        --gradient: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--secondary) 100%
+        );
+      }
+
+      .hero-slider {
+        position: relative;
+        height: 90vh;
+        overflow: hidden;
+      }
+
+      .slide {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+      }
+
+      .slide::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.2) 0%,
+          rgba(0, 0, 0, 0.6) 100%
+        );
+      }
+
+      .slide.active {
+        opacity: 1;
+      }
+
+      .ocean-btn {
+        background: var(--gradient);
+        box-shadow: 0 4px 15px rgba(0, 105, 148, 0.4);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .ocean-btn::after {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -60%;
+        width: 200%;
+        height: 200%;
+        background: rgba(255, 255, 255, 0.2);
+        transform: rotate(30deg);
+        transition: all 0.3s ease;
+      }
+
+      .ocean-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(0, 105, 148, 0.6);
+      }
+
+      .ocean-btn:hover::after {
+        left: 100%;
+      }
+
+      .map-container {
+        height: 300px;
+        background-color: var(--light);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+
+      .chart-container {
+        height: 250px;
+        background-color: var(--light);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+
+      .logo-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(120px, 1fr));
+        gap: 20px;
+      }
+
+      .award-card {
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        position: relative;
+      }
+
+      .award-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--gradient);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .award-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 15px 30px rgba(0, 105, 148, 0.2);
+      }
+
+      .award-card:hover::before {
+        opacity: 0.05;
+      }
+
+      .ocean-bg {
+        background: linear-gradient(
+          135deg,
+          rgba(0, 169, 232, 0.05) 0%,
+          rgba(0, 105, 148, 0.05) 100%
+        );
+        position: relative;
+        overflow: hidden;
+      }
+
+      .ocean-bg::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(127, 219, 255, 0.1) 0%,
+          transparent 70%
+        );
+        animation: float 15s infinite linear;
+      }
+
+      .ocean-dark-bg {
+        background: linear-gradient(135deg, var(--dark) 0%, #00283d 100%);
+      }
+
+      .ocean-text {
+        color: var(--primary);
+        position: relative;
+        display: inline-block;
+      }
+
+      .ocean-text::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 50%;
+        height: 3px;
+        background: var(--gradient);
+        border-radius: 3px;
+      }
+
+      .slider-controls {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 10px;
+        z-index: 10;
+      }
+
+      .slider-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .slider-dot.active {
+        background-color: white;
+        transform: scale(1.3);
+      }
+
+      .video-card {
+        transition: all 0.3s ease;
+        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .video-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 105, 148, 0.2);
+      }
+
+      .nav-link {
+        position: relative;
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--gradient);
+        transition: width 0.3s ease;
+      }
+
+      .nav-link:hover::after {
+        width: 100%;
+      }
+
+      .logo-card {
+        transition: all 0.3s ease;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        padding: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+      }
+
+      .logo-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 105, 148, 0.1);
+      }
+
+      .floating {
+        animation: floating 6s ease-in-out infinite;
+      }
+
+      .floating-2 {
+        animation: floating 8s ease-in-out infinite 2s;
+      }
+
+      .floating-3 {
+        animation: floating 7s ease-in-out infinite 1s;
+      }
+
+      @keyframes floating {
+        0% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-15px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
+      }
+
+      @keyframes float {
+        0% {
+          transform: translate(0, 0);
+        }
+        50% {
+          transform: translate(50%, 50%);
+        }
+        100% {
+          transform: translate(0, 0);
+        }
+      }
+
+      .wave-shape {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        overflow: hidden;
+        line-height: 0;
+      }
+
+      .wave-shape svg {
+        position: relative;
+        display: block;
+        width: calc(100% + 1.3px);
+        height: 150px;
+      }
+
+      .wave-shape .shape-fill {
+        fill: #ffffff;
+      }
+
+      .section-title {
+        position: relative;
+        display: inline-block;
+        padding-bottom: 10px;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background: var(--gradient);
+        border-radius: 2px;
+      }
+
+      .social-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .social-icon:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-3px);
+      }
+
+      @media (max-width: 768px) {
+        .hero-slider {
+          height: 70vh;
+        }
+
+        .logo-grid {
+          grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        }
+      }
+    </style>
+  </head>
+  <body class="font-sans">
+    <!-- Navbar -->
+    <nav class="bg-white/90 backdrop-blur-md shadow-lg sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="flex justify-between items-center h-16">
+          <!-- Logo -->
+          <div class="flex-shrink-0 flex items-center">
+            <img
+              class="h-10"
+              src="assets/img/logo/bontang.svg"
+              alt="Bontang Satu Logo"
+            />
+          </div>
+
+          <!-- Desktop Menu -->
+          <div class="hidden md:block">
+            <div class="ml-10 flex items-center space-x-4">
+              <a
+                href="#"
+                class="nav-link text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium"
+                >Home</a
+              >
+              <a
+                href="#"
+                class="nav-link text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium"
+                >Peta</a
+              >
+              <a
+                href="#"
+                class="nav-link text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium"
+                >Bapperida</a
+              >
+              <a
+                href="#"
+                class="nav-link text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium"
+                >Satu Data</a
+              >
+              <a
+                href="#"
+                class="nav-link text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium"
+                >Tentang</a
+              >
+              <button
+                class="ocean-btn text-white px-4 py-2 rounded-md text-sm font-medium"
+              >
+                Sign In
+              </button>
+            </div>
+          </div>
+
+          <!-- Mobile menu button -->
+          <div class="md:hidden flex items-center">
+            <button
+              class="text-gray-900 hover:text-blue-600 focus:outline-none"
+              id="mobile-menu-button"
+            >
+              <i class="fas fa-bars text-xl"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div
+        class="md:hidden hidden bg-white/95 backdrop-blur-md"
+        id="mobile-menu"
+      >
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          <a
+            href="#"
+            class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-blue-50"
+            >Home</a
+          >
+          <a
+            href="#"
+            class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-blue-50"
+            >Product</a
+          >
+          <a
+            href="#"
+            class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-blue-50"
+            >Services</a
+          >
+          <a
+            href="#"
+            class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-blue-50"
+            >Contact</a
+          >
+          <button
+            class="w-full ocean-btn text-white px-4 py-2 rounded-md text-base font-medium mt-2"
+          >
+            Sign In
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Slider Section -->
+    <section class="hero-slider relative">
+      <!-- Slide 1 -->
+      <div
+        class="slide active"
+        style="
+          background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+        "
+      >
+        <div
+          class="absolute inset-0 flex items-center justify-center text-center text-white px-4"
+        >
+          <div class="max-w-4xl mx-auto">
+            <h1
+              class="text-4xl md:text-6xl font-bold mb-4 animate__animated animate__fadeInDown"
+            >
+            PETAKITA BONTANG 
+            </h1>
+            <h2
+              class="text-2xl md:text-4xl font-semibold mb-8 animate__animated animate__fadeInUp"
+            >
+            Satu Data Indonesia • One Map Policy
+            </h2>
+          </div>
+        </div>
+
+        <!-- Floating elements -->
+        <div
+          class="absolute top-20 left-20 w-16 h-16 rounded-full bg-white/10 floating"
+        ></div>
+        <div
+          class="absolute bottom-40 right-32 w-24 h-24 rounded-full bg-white/5 floating-2"
+        ></div>
+        <div
+          class="absolute top-1/3 right-1/4 w-20 h-20 rounded-full bg-white/8 floating-3"
+        ></div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div
+        class="slide"
+        style="
+          background-image: url('https://images.unsplash.com/photo-1505118380757-91f5f5632de0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2026&q=80');
+        "
+      >
+        <div
+          class="absolute inset-0 flex items-center justify-center text-center text-white px-4"
+        >
+          <div class="max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">
+              DIGITAL TRANSFORMATION
+            </h1>
+            <h2 class="text-2xl md:text-4xl font-semibold mb-8">
+              WAVES OF INNOVATION
+            </h2>
+          </div>
+        </div>
+
+        <!-- Floating elements -->
+        <div
+          class="absolute top-1/4 left-1/4 w-16 h-16 rounded-full bg-white/10 floating-2"
+        ></div>
+        <div
+          class="absolute bottom-1/3 right-1/3 w-24 h-24 rounded-full bg-white/5 floating"
+        ></div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div
+        class="slide"
+        style="
+          background-image: url('https://images.unsplash.com/photo-1519046904884-53103b34b206?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+        "
+      >
+        <div
+          class="absolute inset-0 flex items-center justify-center text-center text-white px-4"
+        >
+          <div class="max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">
+              SUSTAINABLE FUTURE
+            </h1>
+            <h2 class="text-2xl md:text-4xl font-semibold mb-8">
+              BLUE ECONOMY INITIATIVE
+            </h2>
+          </div>
+        </div>
+
+        <!-- Floating elements -->
+        <div
+          class="absolute top-32 right-32 w-20 h-20 rounded-full bg-white/10 floating-3"
+        ></div>
+        <div
+          class="absolute bottom-1/4 left-1/4 w-28 h-28 rounded-full bg-white/5 floating-2"
+        ></div>
+      </div>
+
+      <!-- Slider Controls -->
+      <div class="slider-controls">
+        <div class="slider-dot active" data-slide="0"></div>
+        <div class="slider-dot" data-slide="1"></div>
+        <div class="slider-dot" data-slide="2"></div>
+      </div>
+
+      <!-- Wave shape divider -->
+    </section>
+
+    <!-- Perencanaan Pembangunan Section -->
+    <section class="py-16 ocean-bg relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <h2
+          class="section-title text-3xl font-bold text-center mb-12 ocean-text"
+        >
+          Perencanaan Pembangunan
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Left Column -->
+          <div class="bg-white/90 backdrop-blur-sm p-8 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group">
+            <!-- Header with icon and title -->
+            <div class="flex items-start mb-4">
+                <!-- Animated icon container -->
+                <div class="bg-blue-50 p-3 rounded-xl mr-4 group-hover:rotate-6 transition-transform duration-300">
+                    <i class="fas fa-globe text-blue-500 text-2xl"></i>
+                </div>
+                <div>
+                    <!-- Main title -->
+                    <h3 class="text-2xl font-bold text-gray-800">PETAKITA</h3>
+                    <!-- Subtitle with gradient text -->
+                    <p class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500 text-sm font-medium">
+                        Satu Data Indonesia • One Map Policy
+                    </p>
+                </div>
+            </div>
+        
+            <!-- Content with improved typography -->
+            <div class="prose prose-blue max-w-none text-gray-600 mb-6">
+                <p class="mb-4">
+                    Portal webGIS terintegrasi yang menjadi bagian dari Satu Data Indonesia dan 
+                    implementasi One Map Policy Kota Bontang, menyajikan informasi geospasial 
+                    lengkap dan akurat.
+                </p>
+                
+                <!-- Feature list with icons -->
+                <ul class="space-y-3">
+                    <li class="flex items-start">
+                        <span class="inline-flex items-center justify-center w-6 h-6 mr-2 bg-green-100 text-green-600 rounded-full">
+                            <i class="fas fa-check text-xs"></i>
+                        </span>
+                        <span>Akses terbuka untuk semua pemangku kepentingan</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="inline-flex items-center justify-center w-6 h-6 mr-2 bg-blue-100 text-blue-600 rounded-full">
+                            <i class="fas fa-layer-group text-xs"></i>
+                        </span>
+                        <span>Data geospasial terupdate dan terverifikasi</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="inline-flex items-center justify-center w-6 h-6 mr-2 bg-purple-100 text-purple-600 rounded-full">
+                            <i class="fas fa-link text-xs"></i>
+                        </span>
+                        <span>Integrasi dengan sistem pemerintah daerah</span>
+                    </li>
+                </ul>
+            </div>
+        
+            <!-- CTA Button with hover effect -->
+            <div class="mt-4">
+                <button class="w-full md:w-auto inline-flex items-center justify-center px-5 py-3 ocean-btn text-white rounded-lg shadow hover:shadow-lg transition-all hover:brightness-110 transform hover:scale-[1.02]">
+                    <i class="fas fa-map-marked-alt mr-2"></i>
+                    Jelajahi Portal PETAKITA
+                    <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+                </button>
+            </div>
+        
+            <!-- Decorative elements -->
+            <div class="absolute top-0 right-0 w-16 h-16 bg-blue-100/30 rounded-bl-full -z-10"></div>
+            <div class="absolute bottom-0 left-0 w-24 h-24 bg-blue-100/20 rounded-tr-full -z-10"></div>
+        </div>
+
+          <!-- Right Column -->
+          <div class="bg-white/90 backdrop-blur-sm p-8 rounded-xl shadow-lg">
+            <h3 class="text-xl font-semibold mb-6 flex items-center">
+              <i class="fas fa-map-marked-alt text-blue-500 mr-3"></i> ASMARA
+              BANG SIGE 2026
+            </h3>
+            <div class="map-container">
+              <img
+                src="assets/img/map/asmara-bang-sige.png"
+                alt="ASMARA BANG SIGE 2026"
+                class="w-full h-full object-stretch"
+              />
+            </div>
+            <div class="mt-6 flex justify-between">
+              <button
+                class="ocean-btn text-white px-4 py-2 rounded-md text-sm font-medium flex items-center"
+              >
+                <i class="fas fa-search mr-2"></i> Lihat Detail
+              </button>
+              <button
+                class="bg-gray-100 hover:bg-gray-200 text-gray-600 px-4 py-2 rounded-md text-sm font-medium flex items-center"
+              >
+                <i class="fas fa-download mr-2"></i> Download Data
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Logos Section -->
+    <section class="py-16 bg-white relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <h2
+          class="section-title text-3xl font-bold text-center mb-12 ocean-text"
+        >
+          MITRA KAMI
+        </h2>
+
+        <div class="logo-grid">
+          <!-- 25 logo placeholders with improved styling -->
+          <div class="logo-card">
+            <img
+              src="assets/img/logo/bontang.svg"
+              alt="Partner Logo"
+              class="h-25 w-auto object-contain"
+            />
+          </div>
+          <div class="logo-card">
+            <img
+              src="assets/img/logo/bontang.svg"
+              alt="Partner Logo"
+              class="h-25 w-auto object-contain"
+            />
+          </div>
+          <div class="logo-card">
+            <img
+              src="assets/img/logo/bontang.svg"
+              alt="Partner Logo"
+              class="h-25 w-auto object-contain"
+            />
+          </div>
+          <div class="logo-card">
+            <img
+              src="assets/img/logo/bontang.svg"
+              alt="Partner Logo"
+              class="h-25 w-auto object-contain"
+            />
+          </div>
+          <div class="logo-card">
+            <img
+              src="assets/img/logo/bontang.svg"
+              alt="Partner Logo"
+              class="h-25 w-auto object-contain"
+            />
+          </div>
+          <div class="logo-card">
+            <img
+              src="assets/img/logo/bontang.svg"
+              alt="Partner Logo"
+              class="h-25 w-auto object-contain"
+            />
+          </div>
+          <div class="logo-card">
+            <img
+              src="assets/img/logo/bontang.svg"
+              alt="Partner Logo"
+              class="h-25 w-auto object-contain"
+            />
+          </div>
+          <div class="logo-card">
+            <img
+              src="assets/img/logo/bontang.svg"
+              alt="Partner Logo"
+              class="h-25 w-auto object-contain"
+            />
+          </div>
+          <div class="logo-card">
+            <img
+              src="assets/img/logo/bontang.svg"
+              alt="Partner Logo"
+              class="h-25 w-auto object-contain"
+            />
+          </div>
+          <div class="logo-card">
+            <img
+              src="assets/img/logo/bontang.svg"
+              alt="Partner Logo"
+              class="h-25 w-auto object-contain"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Thematic Maps Section -->
+    <section class="py-16 ocean-bg relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <h2
+          class="section-title text-3xl font-bold text-center mb-12 ocean-text"
+        >
+          PETA TEMATIK DKI Bontang
+        </h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Map Card 1 -->
+          <div
+            class="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-xl"
+          >
+            <div
+              class="h-48 bg-gradient-to-r from-blue-100 to-blue-200 flex items-center justify-center relative"
+            >
+              <i
+                class="fas fa-map-marked-alt text-6xl text-blue-500 opacity-20 absolute top-4 right-4"
+              ></i>
+              <i class="fas fa-map-marked-alt text-6xl text-blue-500"></i>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">Peta Kota</h3>
+              <p class="text-gray-600 mb-4">
+                Peta lengkap wilayah DKI Bontang dengan batas administrasi.
+              </p>
+              <button
+                class="ocean-btn text-white px-4 py-2 rounded-md text-sm font-medium flex items-center"
+              >
+                Lihat Peta <i class="fas fa-arrow-right ml-2"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Map Card 2 -->
+          <div
+            class="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-xl"
+          >
+            <div
+              class="h-48 bg-gradient-to-r from-green-100 to-green-200 flex items-center justify-center relative"
+            >
+              <i
+                class="fas fa-bus text-6xl text-green-500 opacity-20 absolute top-4 right-4"
+              ></i>
+              <i class="fas fa-bus text-6xl text-green-500"></i>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">Transportasi Publik</h3>
+              <p class="text-gray-600 mb-4">
+                Rute dan informasi transportasi umum di Bontang.
+              </p>
+              <button
+                class="ocean-btn text-white px-4 py-2 rounded-md text-sm font-medium flex items-center"
+              >
+                Lihat Peta <i class="fas fa-arrow-right ml-2"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Map Card 3 -->
+          <div
+            class="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-xl"
+          >
+            <div
+              class="h-48 bg-gradient-to-r from-purple-100 to-purple-200 flex items-center justify-center relative"
+            >
+              <i
+                class="fas fa-wifi text-6xl text-purple-500 opacity-20 absolute top-4 right-4"
+              ></i>
+              <i class="fas fa-wifi text-6xl text-purple-500"></i>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">WiFi Publik</h3>
+              <p class="text-gray-600 mb-4">
+                Lokasi hotspot WiFi gratis di seluruh Bontang.
+              </p>
+              <button
+                class="ocean-btn text-white px-4 py-2 rounded-md text-sm font-medium flex items-center"
+              >
+                Lihat Peta <i class="fas fa-arrow-right ml-2"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Map Card 4 -->
+          <div
+            class="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-xl"
+          >
+            <div
+              class="h-48 bg-gradient-to-r from-yellow-100 to-yellow-200 flex items-center justify-center relative"
+            >
+              <i
+                class="fas fa-school text-6xl text-yellow-500 opacity-20 absolute top-4 right-4"
+              ></i>
+              <i class="fas fa-school text-6xl text-yellow-500"></i>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">Pendidikan</h3>
+              <p class="text-gray-600 mb-4">
+                Sekolah dan fasilitas pendidikan di Bontang.
+              </p>
+              <button
+                class="ocean-btn text-white px-4 py-2 rounded-md text-sm font-medium flex items-center"
+              >
+                Lihat Peta <i class="fas fa-arrow-right ml-2"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Map Card 5 -->
+          <div
+            class="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-xl"
+          >
+            <div
+              class="h-48 bg-gradient-to-r from-red-100 to-red-200 flex items-center justify-center relative"
+            >
+              <i
+                class="fas fa-hospital text-6xl text-red-500 opacity-20 absolute top-4 right-4"
+              ></i>
+              <i class="fas fa-hospital text-6xl text-red-500"></i>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">Kesehatan</h3>
+              <p class="text-gray-600 mb-4">
+                Fasilitas kesehatan dan rumah sakit di Bontang.
+              </p>
+              <button
+                class="ocean-btn text-white px-4 py-2 rounded-md text-sm font-medium flex items-center"
+              >
+                Lihat Peta <i class="fas fa-arrow-right ml-2"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Map Card 6 -->
+          <div
+            class="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-xl"
+          >
+            <div
+              class="h-48 bg-gradient-to-r from-indigo-100 to-indigo-200 flex items-center justify-center relative"
+            >
+              <i
+                class="fas fa-tree text-6xl text-indigo-500 opacity-20 absolute top-4 right-4"
+              ></i>
+              <i class="fas fa-tree text-6xl text-indigo-500"></i>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">Ruang Terbuka Hijau</h3>
+              <p class="text-gray-600 mb-4">Taman dan area hijau di Bontang.</p>
+              <button
+                class="ocean-btn text-white px-4 py-2 rounded-md text-sm font-medium flex items-center"
+              >
+                Lihat Peta <i class="fas fa-arrow-right ml-2"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dashboard Section -->
+    <section class="py-16 bg-white relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <h2
+          class="section-title text-3xl font-bold text-center mb-12 ocean-text"
+        >
+          DASHBOARD DATA Bontang
+        </h2>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <!-- Left Column -->
+          <div class="lg:col-span-2 space-y-6">
+            <!-- Map -->
+            <div class="bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg">
+              <h3 class="text-xl font-semibold mb-4 flex items-center">
+                <i class="fas fa-map-marked-alt text-blue-500 mr-3"></i> Peta
+                Sebaran Fasilitas
+              </h3>
+              <div class="map-container">
+                <img
+                  src="https://via.placeholder.com/800x400?text=Interactive+Map"
+                  alt="Interactive Map"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="mt-4 flex space-x-4">
+                <button
+                  class="ocean-btn text-white px-4 py-2 rounded-md text-sm font-medium flex items-center"
+                >
+                  <i class="fas fa-filter mr-2"></i> Filter Data
+                </button>
+                <button
+                  class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-md text-sm font-medium flex items-center"
+                >
+                  <i class="fas fa-file-export mr-2"></i> Ekspor
+                </button>
+              </div>
+            </div>
+
+            <!-- Charts Row -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div
+                class="bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg"
+              >
+                <h4 class="font-medium mb-4 flex items-center">
+                  <i class="fas fa-users text-blue-500 mr-3"></i> Statistik
+                  Penduduk
+                </h4>
+                <div class="chart-container">
+                  <img
+                    src="https://via.placeholder.com/400x200?text=Bar+Chart"
+                    alt="Bar Chart"
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+              <div
+                class="bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg"
+              >
+                <h4 class="font-medium mb-4 flex items-center">
+                  <i class="fas fa-chart-line text-green-500 mr-3"></i>
+                  Pertumbuhan Ekonomi
+                </h4>
+                <div class="chart-container">
+                  <img
+                    src="https://via.placeholder.com/400x200?text=Line+Chart"
+                    alt="Line Chart"
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column -->
+          <div class="space-y-6">
+            <!-- Data Summary -->
+            <div class="bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg">
+              <h3 class="text-xl font-semibold mb-6 flex items-center">
+                <i class="fas fa-database text-blue-500 mr-3"></i> Ringkasan
+                Data
+              </h3>
+
+              <div class="space-y-6">
+                <div class="flex items-center">
+                  <div class="bg-blue-100 p-3 rounded-lg mr-4">
+                    <i class="fas fa-users text-blue-500"></i>
+                  </div>
+                  <div>
+                    <p class="text-gray-600">Jumlah Penduduk</p>
+                    <p class="text-2xl font-bold">10,562,088</p>
+                  </div>
+                </div>
+
+                <div class="flex items-center">
+                  <div class="bg-green-100 p-3 rounded-lg mr-4">
+                    <i class="fas fa-map-marked-alt text-green-500"></i>
+                  </div>
+                  <div>
+                    <p class="text-gray-600">Luas Wilayah</p>
+                    <p class="text-2xl font-bold">661.5 km²</p>
+                  </div>
+                </div>
+
+                <div class="flex items-center">
+                  <div class="bg-purple-100 p-3 rounded-lg mr-4">
+                    <i class="fas fa-people-arrows text-purple-500"></i>
+                  </div>
+                  <div>
+                    <p class="text-gray-600">Kepadatan Penduduk</p>
+                    <p class="text-2xl font-bold">15,976/km²</p>
+                  </div>
+                </div>
+
+                <div class="flex items-center">
+                  <div class="bg-yellow-100 p-3 rounded-lg mr-4">
+                    <i class="fas fa-chart-line text-yellow-500"></i>
+                  </div>
+                  <div>
+                    <p class="text-gray-600">IPM (2022)</p>
+                    <p class="text-2xl font-bold">81.11</p>
+                  </div>
+                </div>
+              </div>
+
+              <button
+                class="mt-6 w-full ocean-btn text-white px-4 py-2 rounded-md text-sm font-medium flex items-center justify-center"
+              >
+                <i class="fas fa-search mr-2"></i> Lihat Detail
+              </button>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg">
+              <h3 class="text-xl font-semibold mb-6 flex items-center">
+                <i class="fas fa-bolt text-yellow-500 mr-3"></i> Akses Cepat
+              </h3>
+
+              <div class="space-y-4">
+                <a
+                  href="#"
+                  class="flex items-center p-3 rounded-lg hover:bg-blue-50 transition"
+                >
+                  <div class="bg-blue-100 p-2 rounded-lg mr-3">
+                    <i class="fas fa-download text-blue-500"></i>
+                  </div>
+                  <span class="font-medium">Download Data</span>
+                  <i class="fas fa-chevron-right ml-auto text-gray-400"></i>
+                </a>
+                <a
+                  href="#"
+                  class="flex items-center p-3 rounded-lg hover:bg-blue-50 transition"
+                >
+                  <div class="bg-green-100 p-2 rounded-lg mr-3">
+                    <i class="fas fa-book text-green-500"></i>
+                  </div>
+                  <span class="font-medium">Dokumentasi API</span>
+                  <i class="fas fa-chevron-right ml-auto text-gray-400"></i>
+                </a>
+                <a
+                  href="#"
+                  class="flex items-center p-3 rounded-lg hover:bg-blue-50 transition"
+                >
+                  <div class="bg-purple-100 p-2 rounded-lg mr-3">
+                    <i class="fas fa-chart-bar text-purple-500"></i>
+                  </div>
+                  <span class="font-medium">Visualisasi Data</span>
+                  <i class="fas fa-chevron-right ml-auto text-gray-400"></i>
+                </a>
+                <a
+                  href="#"
+                  class="flex items-center p-3 rounded-lg hover:bg-blue-50 transition"
+                >
+                  <div class="bg-red-100 p-2 rounded-lg mr-3">
+                    <i class="fas fa-question-circle text-red-500"></i>
+                  </div>
+                  <span class="font-medium">Bantuan</span>
+                  <i class="fas fa-chevron-right ml-auto text-gray-400"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Awards Section -->
+    <section class="py-16 ocean-bg relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <h2
+          class="section-title text-3xl font-bold text-center mb-12 ocean-text"
+        >
+          PENGHARGAAN
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Award 1 -->
+          <div class="award-card">
+            <div
+              class="h-48 bg-gradient-to-r from-blue-500 to-blue-700 flex items-center justify-center relative"
+            >
+              <div
+                class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/brushed-alum.png')] opacity-10"
+              ></div>
+              <i class="fas fa-trophy text-6xl text-white"></i>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xl font-semibold">Smart City Award 2023</h3>
+                <span
+                  class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded"
+                  >Nasional</span
+                >
+              </div>
+              <p class="text-gray-600 mb-4">
+                Penghargaan untuk inovasi smart city terbaik di Indonesia.
+              </p>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-gray-500"
+                  ><i class="fas fa-calendar-alt mr-1"></i> Januari 2023</span
+                >
+                <button
+                  class="ocean-btn text-white px-3 py-1 rounded-md text-sm font-medium"
+                >
+                  Detail <i class="fas fa-arrow-right ml-1"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Award 2 -->
+          <div class="award-card">
+            <div
+              class="h-48 bg-gradient-to-r from-green-500 to-green-700 flex items-center justify-center relative"
+            >
+              <div
+                class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/brushed-alum.png')] opacity-10"
+              ></div>
+              <i class="fas fa-award text-6xl text-white"></i>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xl font-semibold">Digital Government Award</h3>
+                <span
+                  class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded"
+                  >Internasional</span
+                >
+              </div>
+              <p class="text-gray-600 mb-4">
+                Penghargaan untuk transformasi digital pemerintahan.
+              </p>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-gray-500"
+                  ><i class="fas fa-calendar-alt mr-1"></i> November 2022</span
+                >
+                <button
+                  class="ocean-btn text-white px-3 py-1 rounded-md text-sm font-medium"
+                >
+                  Detail <i class="fas fa-arrow-right ml-1"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Award 3 -->
+          <div class="award-card">
+            <div
+              class="h-48 bg-gradient-to-r from-purple-500 to-purple-700 flex items-center justify-center relative"
+            >
+              <div
+                class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/brushed-alum.png')] opacity-10"
+              ></div>
+              <i class="fas fa-medal text-6xl text-white"></i>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xl font-semibold">Open Data Champion</h3>
+                <span
+                  class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded"
+                  >Regional</span
+                >
+              </div>
+              <p class="text-gray-600 mb-4">
+                Penghargaan untuk keterbukaan data pemerintah terbaik.
+              </p>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-gray-500"
+                  ><i class="fas fa-calendar-alt mr-1"></i> Juni 2022</span
+                >
+                <button
+                  class="ocean-btn text-white px-3 py-1 rounded-md text-sm font-medium"
+                >
+                  Detail <i class="fas fa-arrow-right ml-1"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-12">
+          <button
+            class="ocean-btn text-white font-medium py-3 px-8 rounded-md inline-flex items-center"
+          >
+            Lihat Semua Penghargaan <i class="fas fa-arrow-right ml-2"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="py-16 bg-white relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <h2
+          class="section-title text-3xl font-bold text-center mb-12 ocean-text"
+        >
+          VIDEO TUTORIAL
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Video 1 -->
+          <div class="video-card">
+            <div
+              class="relative pb-[56.25%] bg-black rounded-t-lg overflow-hidden"
+            >
+              <img
+                src="https://via.placeholder.com/800x450?text=Video+Thumbnail"
+                alt="Video Thumbnail"
+                class="absolute h-full w-full object-cover"
+              />
+              <div class="absolute inset-0 flex items-center justify-center">
+                <button
+                  class="bg-white bg-opacity-80 rounded-full p-4 hover:bg-opacity-100 transition transform hover:scale-110"
+                >
+                  <i class="fas fa-play text-blue-600 text-2xl"></i>
+                </button>
+              </div>
+              <div
+                class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4"
+              >
+                <span class="text-white text-sm"
+                  ><i class="fas fa-clock mr-1"></i> 5:32 menit</span
+                >
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">
+                Cara Menggunakan Bontang Satu
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Tutorial lengkap untuk memanfaatkan semua fitur Bontang Satu.
+              </p>
+              <div class="flex items-center text-sm text-gray-500">
+                <i class="fas fa-eye mr-1"></i>
+                <span>12.5K views</span>
+                <span class="mx-2">•</span>
+                <i class="fas fa-calendar-alt mr-1"></i>
+                <span>15 Juni 2023</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Video 2 -->
+          <div class="video-card">
+            <div
+              class="relative pb-[56.25%] bg-black rounded-t-lg overflow-hidden"
+            >
+              <img
+                src="https://via.placeholder.com/800x450?text=Video+Thumbnail"
+                alt="Video Thumbnail"
+                class="absolute h-full w-full object-cover"
+              />
+              <div class="absolute inset-0 flex items-center justify-center">
+                <button
+                  class="bg-white bg-opacity-80 rounded-full p-4 hover:bg-opacity-100 transition transform hover:scale-110"
+                >
+                  <i class="fas fa-play text-blue-600 text-2xl"></i>
+                </button>
+              </div>
+              <div
+                class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4"
+              >
+                <span class="text-white text-sm"
+                  ><i class="fas fa-clock mr-1"></i> 7:15 menit</span
+                >
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">Mengakses Data Terbuka</h3>
+              <p class="text-gray-600 mb-4">
+                Panduan mengunduh dan menggunakan data terbuka Bontang.
+              </p>
+              <div class="flex items-center text-sm text-gray-500">
+                <i class="fas fa-eye mr-1"></i>
+                <span>8.2K views</span>
+                <span class="mx-2">•</span>
+                <i class="fas fa-calendar-alt mr-1"></i>
+                <span>1 Juni 2023</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-12">
+          <button
+            class="bg-gray-100 hover:bg-gray-200 text-gray-800 font-medium py-3 px-8 rounded-md inline-flex items-center"
+          >
+            Lihat Video Lainnya <i class="fas fa-arrow-right ml-2"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+      class="ocean-dark-bg text-white pt-16 pb-8 relative overflow-hidden"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <!-- Column 1 -->
+          <div>
+            <img
+              src="https://via.placeholder.com/150x50?text=BontangSatu"
+              alt="Bontang Satu Logo"
+              class="h-10 mb-6"
+            />
+            <p class="text-gray-400 mb-6">
+              Platform terintegrasi untuk data dan layanan digital DKI Bontang.
+            </p>
+            <div class="flex space-x-4">
+              <a href="#" class="social-icon">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-youtube"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Column 2 -->
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Tautan Cepat</h3>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white flex items-center"
+                  ><i class="fas fa-chevron-right text-xs mr-2"></i> Beranda</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white flex items-center"
+                  ><i class="fas fa-chevron-right text-xs mr-2"></i> Produk</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white flex items-center"
+                  ><i class="fas fa-chevron-right text-xs mr-2"></i> Layanan</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white flex items-center"
+                  ><i class="fas fa-chevron-right text-xs mr-2"></i> Kontak</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white flex items-center"
+                  ><i class="fas fa-chevron-right text-xs mr-2"></i> Blog</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Column 3 -->
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Layanan</h3>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white flex items-center"
+                  ><i class="fas fa-chevron-right text-xs mr-2"></i> Data
+                  Terbuka</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white flex items-center"
+                  ><i class="fas fa-chevron-right text-xs mr-2"></i> API</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white flex items-center"
+                  ><i class="fas fa-chevron-right text-xs mr-2"></i> Peta
+                  Digital</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white flex items-center"
+                  ><i class="fas fa-chevron-right text-xs mr-2"></i>
+                  Statistik</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white flex items-center"
+                  ><i class="fas fa-chevron-right text-xs mr-2"></i>
+                  Dokumentasi</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Column 4 -->
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Kontak</h3>
+            <address class="not-italic text-gray-400 space-y-3">
+              <div class="flex items-start">
+                <i class="fas fa-map-marker-alt mt-1 mr-3 text-blue-400"></i>
+                <span>Jl. Medan Merdeka Selatan No.8-9, Bontang 10110</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-phone-alt mr-3 text-blue-400"></i>
+                <span>(021) 3822255</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-envelope mr-3 text-blue-400"></i>
+                <span>info@Bontangsatu.Bontang.go.id</span>
+              </div>
+            </address>
+          </div>
+        </div>
+
+        <div
+          class="border-t border-gray-700 mt-12 pt-6 flex flex-col md:flex-row justify-between items-center"
+        >
+          <p class="text-gray-400 text-sm mb-4 md:mb-0">
+            © 2023 Bontang Satu. All rights reserved.
+          </p>
+          <div class="flex space-x-6">
+            <a href="#" class="text-gray-400 hover:text-white text-sm"
+              >Kebijakan Privasi</a
+            >
+            <a href="#" class="text-gray-400 hover:text-white text-sm"
+              >Syarat & Ketentuan</a
+            >
+            <a href="#" class="text-gray-400 hover:text-white text-sm"
+              >Peta Situs</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Floating elements -->
+      <div
+        class="absolute -top-20 -left-20 w-64 h-64 rounded-full bg-white/5 floating"
+      ></div>
+      <div
+        class="absolute -bottom-40 -right-20 w-80 h-80 rounded-full bg-white/5 floating-2"
+      ></div>
+    </footer>
+
+    <script>
+      // Mobile menu toggle
+      document
+        .getElementById("mobile-menu-button")
+        .addEventListener("click", function () {
+          const menu = document.getElementById("mobile-menu");
+          menu.classList.toggle("hidden");
+        });
+
+      // Hero Slider
+      const slides = document.querySelectorAll(".slide");
+      const dots = document.querySelectorAll(".slider-dot");
+      let currentSlide = 0;
+
+      function showSlide(index) {
+        slides.forEach((slide, i) => {
+          slide.classList.toggle("active", i === index);
+        });
+
+        dots.forEach((dot, i) => {
+          dot.classList.toggle("active", i === index);
+        });
+
+        currentSlide = index;
+      }
+
+      dots.forEach((dot) => {
+        dot.addEventListener("click", function () {
+          const slideIndex = parseInt(this.getAttribute("data-slide"));
+          showSlide(slideIndex);
+        });
+      });
+
+      // Auto slide change
+      setInterval(() => {
+        const nextSlide = (currentSlide + 1) % slides.length;
+        showSlide(nextSlide);
+      }, 5000);
+
+      // Animate elements on scroll
+      function animateOnScroll() {
+        const elements = document.querySelectorAll(
+          ".award-card, .map-container, .chart-container, .video-card"
+        );
+
+        elements.forEach((element) => {
+          const elementPosition = element.getBoundingClientRect().top;
+          const screenPosition = window.innerHeight / 1.2;
+
+          if (elementPosition < screenPosition) {
+            element.style.opacity = "1";
+            element.style.transform = "translateY(0)";
+          }
+        });
+      }
+
+      // Initialize animation
+      document.addEventListener("DOMContentLoaded", function () {
+        const cards = document.querySelectorAll(
+          ".award-card, .map-container, .chart-container, .video-card"
+        );
+        cards.forEach((card) => {
+          card.style.opacity = "0";
+          card.style.transform = "translateY(20px)";
+          card.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+        });
+
+        // Trigger initial animation
+        setTimeout(() => {
+          animateOnScroll();
+        }, 300);
+      });
+
+      // Add scroll event listener
+      window.addEventListener("scroll", animateOnScroll);
+    </script>
+  </body>
+</html>
