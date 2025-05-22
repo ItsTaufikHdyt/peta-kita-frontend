@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Peta Batas Kecamatan & Titik WiFi</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    #map {
+      height: 100vh;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Peta Batas Kecamatan dan Titik WiFi</h2>
+<div id="map"></div>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<script>
+  // Inisialisasi peta
+  var map = L.map('map').setView([0.15, 117.52], 12); // Ubah sesuai lokasi kamu
+
+  // Tambahkan layer dasar dari OpenStreetMap
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap contributors'
+  }).addTo(map);
+
+  // Fungsi untuk membuat popup dari semua properti
+  function createPopupContent(properties) {
+    let popupContent = '<ul>';
+    for (let key in properties) {
+      popupContent += `<li><strong>${key}</strong>: ${properties[key]}</li>`;
+    }
+    popupContent += '</ul>';
+    return popupContent;
+  }
+
+  // Layer GeoJSON Kecamatan
+  const baseUrl = 'https://services.arcgis.com/tlJcENMD2zMI0kgn/ArcGIS/rest/services/Batas_Kecamatan_Terbaru/FeatureServer/0/query';
+  const params = {
+    where: '1=1',
+    outFields: '*',
+    f: 'geojson'
+  };
+  const token = '3NKHt6i2urmWtqOuugvr9YPAWT8oI9XGfy9kKU1VKuFVa_JTZdjBFHAqh0mwBF4JoZrM8fAokBWI4yQ240mT8ZkZ1T5-Jz_oOOBU6UtLlO4bE3dC22CjCR5ZRPSrzph1wvoomXW0s_RcWpiL0DMq7aQYfemquQGpd9p8ZRw509xJqIyfxTUjOTuzstgNVe2OAq3fWOpbz4gEMXk3SkeKfw1_J3xDoKu-n1BciumaeTpMQDSMgcOdz91op-KZ3l9qtZ5k4REpdsJEm7pib1PNqURF2r-RpC7NPRPtLsGAKyk';
+  
+  const queryString = new URLSearchParams({...params, token}).toString();
+  const url = `${baseUrl}?${queryString}`;
+
+  fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      L.geoJSON(data, {
+        style: {
+          color: 'blue',
+          weight: 2,
+          fillOpacity: 0.3
+        },
+        onEachFeature: function (feature, layer) {
+          if (feature.properties) {
+            layer.bindPopup('<b>Data Kecamatan:</b>' + createPopupContent(feature.properties));
+          }
+        }
+      }).addTo(map);
+    });
+</script>
+
+</body>
+</html>

@@ -1,22 +1,231 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ArcGIS Dashboard</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="public/css/dashboard.css">
-</head>
-<body>
-    <header class="header">
-        <h1>Dashboard Pemetaan</h1>
-        <p>Visualisasi data spasial dan analisis geografis</p>
-    </header>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Dashboard ArcGIS Private dengan SDK</title>
+  
+  <!-- Memuat CSS ArcGIS API for JavaScript -->
+  <link rel="stylesheet" href="https://js.arcgis.com/4.27/esri/themes/light/main.css" />
+  
+  <style>
+    html, body, #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
     
-    <div class="container">
-        <div class="dashboard-wrapper">
-            <iframe src="https://www.arcgis.com/apps/dashboards/cd8f994215994806aaa07189d2ebe52c" allowfullscreen></iframe>
-        </div>
-    </div>
+    .dashboard-container {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .dashboard-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    
+    .esri-view-error {
+      color: red;
+      padding: 20px;
+      background-color: white;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    
+    .loading {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 16px;
+      font-family: "Avenir Next", "Helvetica Neue", sans-serif;
+      background-color: white;
+      padding: 15px 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      z-index: 100;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="loading" class="loading">Memuat dashboard...</div>
+  <div id="dashboardContainer" class="dashboard-container"></div>
+  
+  <!-- Memuat ArcGIS API for JavaScript -->
+  <script src="https://js.arcgis.com/4.27/"></script>
+  
+  <script>
+    // Konfigurasi untuk ArcGIS dashboard
+    const config = {
+      // PARAMETER WAJIB
+      portalUrl: "https://www.arcgis.com", // URL portal ArcGIS Online atau Portal Enterprise
+      dashboardId: "006ba0623d5b49ed97b7e95264781623", // ID dashboard privat yang ingin ditampilkan
+      
+      // METODE 3: Menggunakan App ID (Recommended for production)
+      oauthAppId: "jIT0Qyu4uYbgNaC7" // Ganti dengan App ID Anda dari developer dashboard ArcGIS
+    };
+    
+    // Load ArcGIS modules
+    require([
+      "esri/config",
+      "esri/portal/Portal",
+      "esri/identity/IdentityManager",
+      "esri/portal/PortalItem",
+      "esri/WebScene",
+      "esri/views/SceneView",
+      "esri/identity/OAuthInfo",
+      "esri/identity/Credential"
+    ], function(
+      esriConfig,
+      Portal,
+      IdentityManager,
+      PortalItem,
+      WebScene,
+      SceneView,
+      OAuthInfo,
+      Credential
+    ) {
+      // Mengatur tingkat cache
+      esriConfig.request.useIdentity = true;
+      
+      // Fungsi untuk menampilkan pesan loading dan error
+      function showLoading(message) {
+        document.getElementById("loading").innerText = message;
+      }
+      
+      function hideLoading() {
+        document.getElementById("loading").style.display = "none";
+      }
+      
+      function showError(message) {
+        hideLoading();
+        const errorDiv = document.createElement("div");
+        errorDiv.className = "esri-view-error";
+        errorDiv.innerHTML = `<h3>Error</h3><p>${message}</p>`;
+        document.getElementById("dashboardContainer").appendChild(errorDiv);
+        console.error(message);
+      }
+      
+      // Fungsi untuk menginisialisasi autentikasi
+      async function initializeAuthentication() {
+        if (!config.oauthAppId) {
+          return Promise.reject("App ID tidak ditemukan dalam konfigurasi");
+        }
+
+        try {
+          // Konfigurasi OAuth
+          const oauthInfo = new OAuthInfo({
+            appId: config.oauthAppId,
+            popup: false,
+            portalUrl: config.portalUrl,
+            authMode: "immediate"
+          });
+
+          // Daftarkan OAuth info
+          IdentityManager.registerOAuthInfos([oauthInfo]);
+
+          // Cek status login
+          await IdentityManager.checkSignInStatus(config.portalUrl + "/sharing");
+          return Promise.resolve();
+        } catch (error) {
+          // Jika belum login, redirect ke halaman login
+          IdentityManager.getCredential(config.portalUrl + "/sharing");
+          return Promise.reject("Redirecting untuk autentikasi...");
+        }
+      }
+      
+      // Fungsi untuk memuat dan menampilkan dashboard
+      async function loadDashboard() {
+        try {
+          showLoading("Melakukan autentikasi...");
+          await initializeAuthentication();
+          
+          showLoading("Memuat portal...");
+          // Inisialisasi portal
+          const portal = new Portal({
+            url: config.portalUrl,
+            authMode: "immediate"
+          });
+          
+          await portal.load();
+          console.log("Portal berhasil dimuat:", portal.name);
+          
+          showLoading("Memuat item dashboard...");
+          // Memuat item dashboard
+          const dashboardItem = new PortalItem({
+            id: config.dashboardId,
+            portal: portal
+          });
+          
+          await dashboardItem.load();
+          console.log("Dashboard berhasil dimuat:", dashboardItem.title);
+          
+          // Cek tipe item
+          if (dashboardItem.type === "Operation Dashboard" || dashboardItem.type === "Dashboard") {
+            showLoading("Menyiapkan dashboard...");
+            
+            // Buat URL dashboard
+            let dashboardUrl;
+            
+            // Menentukan URL berdasarkan tipe dashboard
+            if (dashboardItem.type === "Operation Dashboard") {
+              dashboardUrl = `${config.portalUrl}/apps/opsdashboard/index.html#/${config.dashboardId}`;
+            } else if (dashboardItem.type === "Dashboard") {
+              dashboardUrl = `${config.portalUrl}/apps/dashboards/index.html#/${config.dashboardId}`;
+            }
+            
+            console.log("Menggunakan URL:", dashboardUrl);
+            
+            // Membuat iframe untuk menampilkan dashboard
+            const iframe = document.createElement("iframe");
+            iframe.className = "dashboard-iframe";
+            iframe.src = dashboardUrl;
+            iframe.allowFullscreen = true;
+            
+            // Tambahkan event listener untuk menangani error loading
+            iframe.onerror = function() {
+              showError("Gagal memuat dashboard dalam iframe");
+            };
+            
+            // Tempatkan iframe di container
+            document.getElementById("dashboardContainer").appendChild(iframe);
+            
+            // Sembunyikan loading ketika iframe selesai dimuat
+            iframe.onload = function() {
+              hideLoading();
+            };
+            
+            // Tambahkan timeout untuk kasus iframe gagal dimuat
+            setTimeout(function() {
+              if (document.getElementById("loading").style.display !== "none") {
+                hideLoading();
+                showError("Timeout saat memuat dashboard");
+              }
+            }, 20000);
+          } else {
+            showError(`Item bukan dashboard yang valid. Tipe item: ${dashboardItem.type}`);
+          }
+        } catch (error) {
+          showError(`Gagal memuat dashboard: ${error.message || error}`);
+        }
+      }
+      
+      // Mulai proses memuat dashboard
+      loadDashboard();
+    });
+  </script>
 </body>
 </html>
