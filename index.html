@@ -4,7 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>PETAKITA – Kota Bontang</title>
-     <link rel="icon" href="assets/img/logo/bontang.svg" type="image/x-icon">
+    <link rel="icon" href="assets/img/logo/bontang.svg" type="image/x-icon" />
+
+    <!-- Font Awesome (untuk chatbot) -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
@@ -19,7 +21,7 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
       rel="stylesheet"
     />
-    <!-- Font agar lebih mirip -->
+    <!-- Font -->
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
       rel="stylesheet"
@@ -31,7 +33,22 @@
         --primary-2: #1f6ca7; /* biru sedang */
         --chip: #e8e3da; /* krem chip kanan */
         --glass: rgba(255, 255, 255, 0.12);
+
+        /* Responsive scales */
+        --wrap-size: clamp(300px, 48vw, 520px); /* globe-wrap */
+        --globe-size: clamp(200px, 32vw, 300px); /* globe */
+        --badge-size: clamp(44px, 7vw, 70px); /* floating icons */
+        --title-fs: clamp(1.25rem, 1rem + 2.2vw, 2.25rem);
+        --subtitle-fs: clamp(0.9rem, 0.7rem + 0.9vw, 1rem);
+
+        --node-d: clamp(150px, 22vw, 230px); /* diameter node */
+        --icon-fs: clamp(32px, 4vw, 60px); /* ukuran ikon di node */
+        --conn-gap: clamp(12px, 2vw, 20px); /* jarak antar chip */
+        --chip-vpad: clamp(0.45rem, 0.7vw, 0.65rem); /* padding vertikal chip */
+        --chip-hpad: clamp(0.8rem, 1.6vw, 1.2rem); /* padding horizontal chip */
+        --chip-fs: clamp(0.85rem, 1.4vw, 1rem); /* font-size chip */
       }
+
       * {
         font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto,
           "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
@@ -44,33 +61,25 @@
             rgba(4, 32, 55, 0.35),
             rgba(3, 25, 44, 0.65)
           ),
-          url("laut7.jpg") center/cover fixed no-repeat;
+          url("laut2.jpg") center/cover fixed no-repeat;
       }
 
-      /* === Header ============================================================ */
-      .brand-badge {
-        width: 64px;
-        height: 64px;
-        border-radius: 50%;
-        background: #ffffff22;
-        border: 1px solid #ffffff55;
-        display: grid;
-        place-items: center;
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
-      }
-      .brand-badge i {
-        font-size: 1.9rem;
-        color: #fff;
-      }
+      /* Header */
       .title {
         letter-spacing: 0.3px;
         text-shadow: 0 4px 28px rgba(0, 0, 0, 0.35);
+        font-size: var(--title-fs);
       }
       .subtitle {
         opacity: 0.9;
+        font-size: var(--subtitle-fs);
+      }
+      header img.brand {
+        width: clamp(90px, 16vw, 170px);
+        height: auto;
       }
 
-      /* Top menu (oval biru dengan 4 item icon+label) */
+      /* Topbar (oval menu biru) */
       .topbar {
         display: flex;
         gap: 28px;
@@ -79,9 +88,11 @@
         background: #104a69;
         border-radius: 999px;
         padding: 0.65rem 1.25rem;
-        width: max-content;
+        width: min(100%, 610px);
         margin-inline: auto;
         box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+        flex-wrap: wrap;
+        row-gap: 10px;
       }
       .topbar .itm {
         display: flex;
@@ -90,114 +101,81 @@
         gap: 0.15rem;
         color: #e6f2fb;
         text-decoration: none;
-        min-width: 78px;
+        min-width: clamp(62px, 12vw, 90px);
       }
       .topbar .ico {
-        width: 44px;
-        height: 44px;
+        width: clamp(36px, 6vw, 44px);
+        height: clamp(36px, 6vw, 44px);
         border-radius: 12px;
         background: #0a3854;
         border: 1px solid #ffffff30;
         display: grid;
         place-items: center;
-        font-size: 1.2rem;
+        font-size: clamp(1rem, 2.6vw, 1.2rem);
       }
       .topbar small {
         font-weight: 600;
         opacity: 0.95;
       }
 
-      /* === Stage (globe kiri + panel kanan) ================================= */
+      /* Stage */
       .stage {
         max-width: 1200px;
         margin-inline: auto;
         position: relative;
+        padding-inline: 12px;
       }
 
-      /* Globe ring stack */
+      /* Globe ring stack (persentase agar ikut skala) */
       .globe-wrap {
         position: relative;
-        width: 520px;
-        height: 520px;
+        width: var(--wrap-size);
+        height: var(--wrap-size);
         border-radius: 50%;
         background: radial-gradient(
             circle at 50% 50%,
-            #ffffff 0 190px,
-            transparent 191px
+            #ffffff 0 47%,
+            transparent 40.5%
           ),
           radial-gradient(
             circle at 50% 50%,
-            rgba(255, 255, 255, 0.78) 0 210px,
-            transparent 211px
+            rgba(255, 255, 255, 0.78) 0 40%,
+            transparent 40.5%
           ),
-          radial-gradient(
-            circle at 50% 50%,
-            #9cc3db55 0 290px,
-            transparent 291px
-          ),
-          radial-gradient(
-            circle at 50% 50%,
-            #6aa7cb55 0 345px,
-            transparent 346px
-          ),
-          radial-gradient(
-            circle at 50% 50%,
-            #3f86b455 0 395px,
-            transparent 396px
-          );
+          radial-gradient(circle at 50% 50%, #9cc3db55 0 56%, transparent 56.5%),
+          radial-gradient(circle at 50% 50%, #6aa7cb55 0 66%, transparent 66.5%),
+          radial-gradient(circle at 50% 50%, #3f86b455 0 76%, transparent 76.5%);
         outline: 2px dashed #ffffff66;
-        outline-offset: -26px;
+        outline-offset: calc(-1 * clamp(12px, 2.5vw, 26px));
         box-shadow: inset 0 0 0 1px #ffffff15, 0 24px 70px rgba(0, 0, 0, 0.35);
       }
+
+      /* Globe: selalu center, hanya rotasi (tekstur di ::before) */
       .globe {
         position: absolute;
-        inset: 0;
-        margin: auto;
-        width: 350px;
-        height: 350px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: var(--globe-size);
+        height: var(--globe-size);
         border-radius: 50%;
         overflow: hidden;
       }
-
-      /* Peta yang berputar */
       .globe::before {
         content: "";
         position: absolute;
         inset: 0;
-        background: url("globe.png") center/cover no-repeat;
         border-radius: inherit;
+        background: url("globe.png") center/cover no-repeat;
         transform-origin: 50% 50%;
-        animation: spin 90s linear infinite; /* atur durasi sesukamu */
+        animation: spin 60s linear infinite; /* ubah durasi sesuai selera */
         will-change: transform;
       }
-
-      /* Highlight/shading tetap (biar efek bola-nya konsisten) */
-      .globe::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        border-radius: inherit;
-        background: radial-gradient(
-            ellipse at 35% 35%,
-            rgba(0, 0, 0, 0.22) 0 40%,
-            transparent 60%
-          ),
-          radial-gradient(
-            circle at 65% 70%,
-            rgba(0, 0, 0, 0.28),
-            transparent 60%
-          );
-        pointer-events: none;
-        mix-blend-mode: multiply;
-      }
-
       @keyframes spin {
         to {
           transform: rotate(360deg);
         }
       }
-
-      /* Opsional: hormati prefers-reduced-motion */
       @media (prefers-reduced-motion: reduce) {
         .globe::before {
           animation: none;
@@ -207,8 +185,8 @@
       /* Floating circle icons (klik untuk ganti tampilan) */
       .badge-float {
         position: absolute;
-        width: 70px;
-        height: 70px;
+        width: var(--badge-size);
+        height: var(--badge-size);
         border-radius: 50%;
         background: #fff;
         color: var(--primary);
@@ -219,74 +197,31 @@
         cursor: pointer;
         user-select: none;
         transition: transform 0.2s ease, box-shadow 0.2s ease;
+        font-size: clamp(1rem, 3vw, 1.35rem);
       }
       .badge-float:hover {
         transform: translateY(-2px);
         box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
       }
-      /* posisi agar mirip gambar */
-      .at-left {
-        left: -16px;
-        top: 55%;
-      }
-      .at-topright {
-        right: -6px;
-        top: 80px;
-      }
-      .at-bottomright {
-        right: 10px;
-        bottom: 18px;
-      }
-
       .badge-float.active {
         box-shadow: 0 0 0 6px #ffffff55, 0 18px 46px rgba(0, 0, 0, 0.4);
       }
 
-      /* Right PANEL – INFORMATION (node + dashed) */
-      .node {
-        width: 230px;
-        height: 230px;
-        border-radius: 50%;
-        background: #fff;
-        color: var(--primary);
-        display: grid;
-        place-items: center;
-        text-align: center;
-        box-shadow: 0 16px 56px rgba(0, 0, 0, 0.35);
+      /* Posisi default (desktop besar) */
+      .at-left {
+        left: -3%;
+        top: 55%;
       }
-      .node .icon {
-        font-size: 60px;
-        line-height: 1;
-        margin-bottom: 0.3rem;
+      .at-topright {
+        right: -1%;
+        top: 12%;
       }
-      .connector {
-        position: relative;
-        min-height: 230px;
-      }
-      .connector::before {
-        content: "";
-        position: absolute;
-        left: -56px;
-        top: 50%;
-        width: 56px;
-        height: 2px;
-        border-bottom: 2px dashed #fff8;
-        transform: translateY(-50%);
-      }
-      .chip {
-        background: var(--chip);
-        color: #1f2b35;
-        border-radius: 999px;
-        padding: 0.65rem 1.2rem;
-        font-weight: 600;
-        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
-        border: 1px solid #00000014;
-      }
-      .chip + .chip {
-        margin-top: 1rem;
+      .at-bottomright {
+        right: 1%;
+        bottom: 3%;
       }
 
-      /* Right PANEL – HIGHLIGHTS (dua kartu putih) */
+      /* Right panels */
       .card-glass {
         background: #ffffffee;
         color: #1f2b35;
@@ -304,13 +239,117 @@
         border-bottom: 1px solid #e5ebf1;
         margin: -0.25rem 0 1rem;
       }
-
       .list-group-item {
         border: 0;
         border-bottom: 1px solid #e9eef3;
       }
       .list-group-item:last-child {
         border-bottom: 0;
+      }
+
+      /* Node: otomatis mengecil/membesar */
+      .node {
+        width: var(--node-d);
+        height: var(--node-d);
+        border-radius: 50%;
+        background: #fff;
+        color: var(--primary);
+        display: grid;
+        place-items: center;
+        text-align: center;
+        box-shadow: 0 16px 56px rgba(0, 0, 0, 0.35);
+      }
+      .node .icon {
+        font-size: var(--icon-fs);
+        line-height: 1;
+        margin-bottom: 0.3rem;
+      }
+
+      /* Connector: pakai flex + gap adaptif */
+      .connector {
+        position: relative;
+        min-height: var(--node-d); /* sejajarkan tinggi node di desktop */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: var(--conn-gap);
+      }
+
+      /* Garis putus-putus (desktop/horizontal) */
+      .connector::before {
+        content: "";
+        position: absolute;
+        left: -56px;
+        top: 50%;
+        width: 56px;
+        height: 2px;
+        border-bottom: 2px dashed #fff8;
+        transform: translateY(-50%);
+      }
+
+      /* Chip: padding & font responsif, rapi untuk icon+teks */
+      .chip {
+        background: var(--chip);
+        color: #1f2b35;
+        border-radius: 999px;
+        padding: var(--chip-vpad) var(--chip-hpad);
+        font-weight: 600;
+        font-size: var(--chip-fs);
+        line-height: 1.2;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem; /* jarak ikon-teks */
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+        border: 1px solid #00000014;
+      }
+      .chip + .chip {
+        margin-top: 0;
+      } /* gap di-handle oleh .connector */
+
+      /* =========================
+   Breakpoints
+   ========================= */
+
+      /* <= 1200px: kecilkan jarak garis & sejajarkan lebih dekat */
+      @media (max-width: 1200px) {
+        .connector::before {
+          left: -40px;
+          width: 40px;
+        }
+      }
+
+      /* <= 992px (tablet & mobile): stack tengah, garis horizontal disembunyikan */
+      @media (max-width: 992px) {
+        .connector {
+          min-height: unset; /* biar tinggi mengikuti isi */
+          align-items: center; /* chip rata tengah */
+        }
+        .connector::before {
+          display: none;
+        }
+      }
+
+      /* <= 576px (HP kecil): opsi garis VERTIKAL pendek di atas chip (estetis) */
+      @media (max-width: 576px) {
+        .connector {
+          padding-top: 18px; /* ruang untuk garis vertikal */
+        }
+        .connector::before {
+          display: block;
+          left: 50%;
+          top: 0;
+          transform: translateX(-50%);
+          width: 2px;
+          height: 16px; /* tinggi kecil biar simpel */
+          border-bottom: none;
+          border-left: 2px dashed #fff8;
+        }
+        .chip {
+          text-align: center;
+          max-width: 90vw; /* cegah melebar keluar layar */
+          justify-content: center;
+          white-space: normal; /* izinkan wrap */
+        }
       }
 
       /* Footer floating icons */
@@ -337,40 +376,7 @@
         box-shadow: 0 14px 36px rgba(0, 0, 0, 0.35);
       }
 
-      /* Responsive */
-      @media (max-width: 992px) {
-        .globe-wrap {
-          margin-inline: auto;
-          transform: scale(0.85);
-        }
-        .connector::before {
-          display: none;
-        }
-        .node {
-          margin-inline: auto;
-        }
-        .stage .col-lg-6:first-child {
-          margin-bottom: 2.25rem;
-        }
-        .topbar {
-          gap: 18px;
-        }
-        .topbar .ico {
-          width: 40px;
-          height: 40px;
-        }
-        .globe-wrap {
-          width: 440px;
-          height: 440px;
-        }
-        .globe {
-          width: 300px;
-          height: 300px;
-        }
-      }
-
-      /* Chatbot Styles */
-      /* Visually hidden untuk teks aksesibilitas */
+      /* Chatbot */
       .visually-hidden {
         position: absolute !important;
         width: 1px;
@@ -382,25 +388,21 @@
         white-space: nowrap;
         border: 0;
       }
-
-      /* Chatbot Styles */
       .chatbot-container {
         position: fixed;
         bottom: 100px;
         right: 30px;
-        width: 350px;
-        height: 600px;
+        width: min(95vw, 380px);
+        height: min(70vh, 620px);
         background: rgba(255, 255, 255, 0.95);
         border-radius: 20px;
         box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
-        display: flex; /* <-- tetap flex */
+        display: flex;
         flex-direction: column;
         overflow: hidden;
         z-index: 1000;
         backdrop-filter: blur(10px);
         border: 1px solid rgba(255, 255, 255, 0.3);
-
-        /* transisi halus: jangan pakai display:none */
         opacity: 0;
         transform: translateY(20px) scale(0.98);
         pointer-events: none;
@@ -408,8 +410,6 @@
         transition: opacity 0.25s ease, transform 0.25s ease,
           visibility 0s linear 0.25s;
       }
-
-      /* Saat aktif */
       .chatbot-container.is-open {
         opacity: 1;
         transform: translateY(0) scale(1);
@@ -417,18 +417,15 @@
         visibility: visible;
         transition: opacity 0.25s ease, transform 0.25s ease;
       }
-
-      /* Header */
       .chatbot-header {
         background: var(--primary, #3d90d7);
         padding: 15px 20px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        color: white;
+        color: #fff;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       }
-
       .chatbot-title {
         display: flex;
         align-items: center;
@@ -436,12 +433,10 @@
         font-weight: 600;
         font-size: 1.1em;
       }
-
       .chatbot-title i {
         font-size: 1.2em;
         animation: pulse 2s infinite;
       }
-
       @keyframes pulse {
         0% {
           transform: scale(1);
@@ -453,7 +448,6 @@
           transform: scale(1);
         }
       }
-
       .chatbot-close {
         background: none;
         border: none;
@@ -466,8 +460,6 @@
       .chatbot-close:hover {
         transform: rotate(90deg);
       }
-
-      /* Messages */
       .chatbot-messages {
         flex: 1;
         padding: 20px;
@@ -477,92 +469,42 @@
         gap: 15px;
         background: rgba(255, 255, 255, 0.8);
       }
-
       .message {
         max-width: 80%;
         padding: 10px 15px;
         border-radius: 15px;
         animation: messageAppear 0.25s ease;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
-        word-break: break-word; /* mencegah overflow */
+        word-break: break-word;
       }
-
       .bot-message {
         align-self: flex-start;
         background: var(--primary, #3d90d7);
         color: #fff;
         border-bottom-left-radius: 5px;
       }
-
       .user-message {
         align-self: flex-end;
-        background: #3d90d7;
-        color: white;
-        border-bottom-right-radius: 5px;
-        /* beda shade agar bot & user beda? gunakan warna lain jika mau */
         background: #2d7ab8;
+        color: #fff;
+        border-bottom-right-radius: 5px;
       }
-
       .message-content {
         display: flex;
         align-items: flex-start;
         gap: 10px;
       }
-
       .message-content i {
         font-size: 1.2em;
         margin-top: 3px;
       }
-
       .message-content p {
         margin: 0;
         line-height: 1.4;
       }
-
-      /* Typing indicator */
-      .typing-indicator {
-        background: #f0f2f5;
-        padding: 10px 15px;
-        border-radius: 15px;
-        width: fit-content;
-      }
-
-      .typing-dots {
-        display: flex;
-        gap: 4px;
-        padding: 5px 0;
-      }
-      .typing-dots span {
-        width: 8px;
-        height: 8px;
-        background: #3d90d7;
-        border-radius: 50%;
-        animation: typing 1s infinite ease-in-out;
-      }
-      .typing-dots span:nth-child(1) {
-        animation-delay: 0.2s;
-      }
-      .typing-dots span:nth-child(2) {
-        animation-delay: 0.4s;
-      }
-      .typing-dots span:nth-child(3) {
-        animation-delay: 0.6s;
-      }
-
-      @keyframes typing {
-        0%,
-        100% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-5px);
-        }
-      }
-
-      /* Input */
       .chatbot-input {
         padding: 15px;
-        background: white;
+        background: #fff;
         border-top: 1px solid rgba(0, 0, 0, 0.1);
         display: flex;
         align-items: center;
@@ -582,16 +524,9 @@
         border-color: #3d90d7;
         box-shadow: 0 0 0 2px rgba(61, 144, 215, 0.2);
       }
-      .chatbot-input input:disabled {
-        background: #f5f5f5;
-        cursor: not-allowed;
-      }
-
       .chatbot-input button {
         background: #3d90d7;
-        flex-shrink: 0; /* <-- cegah tombol terhimpit */
-        width: 44px; /* ukuran lingkaran */
-        color: white;
+        color: #fff;
         border: none;
         width: 40px;
         height: 40px;
@@ -601,24 +536,18 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        flex-shrink: 0;
       }
-      .chatbot-input button:hover:not(:disabled) {
+      .chatbot-input button:hover {
         transform: scale(1.08);
         background: #2d7ab8;
       }
-      .chatbot-input button:disabled {
-        background: #ccc;
-        cursor: not-allowed;
-      }
-
-      /* Stop button */
       #stop-message {
         background: #e74c3c;
       }
-      #stop-message:hover:not(:disabled) {
+      #stop-message:hover {
         background: #c0392b;
       }
-
       @keyframes messageAppear {
         from {
           opacity: 0;
@@ -630,14 +559,84 @@
         }
       }
 
-      /* Responsif */
-      @media (max-width: 480px) {
-        .chatbot-container {
-          right: 16px;
+      /* Breakpoints */
+      @media (max-width: 1200px) {
+        .at-left {
+          left: 2%;
+        }
+        .at-topright {
+          right: 2%;
+          top: 10%;
+        }
+        .at-bottomright {
+          right: 3%;
+          bottom: 3%;
+        }
+      }
+      @media (max-width: 992px) {
+        .globe-wrap {
+          margin-inline: auto;
+        }
+        .connector::before {
+          display: none;
+        }
+        .node {
+          margin-inline: auto;
+        }
+        .at-left {
+          left: 4%;
+          top: 58%;
+        }
+        .at-topright {
+          right: 4%;
+          top: 8%;
+        }
+        .at-bottomright {
+          right: 4%;
+          bottom: 4%;
+        }
+        body {
+          background-attachment: scroll;
+        } /* lebih halus di HP */
+      }
+      @media (max-width: 768px) {
+        .social {
           left: 16px;
-          width: auto;
-          height: 70vh;
-          bottom: 80px;
+          bottom: 14px;
+        }
+        .chat {
+          right: 16px;
+          bottom: 14px;
+        }
+      }
+      @media (max-width: 576px) {
+        .at-left {
+          left: 6%;
+          top: 60%;
+        }
+        .at-topright {
+          right: 6%;
+          top: 6%;
+        }
+        .at-bottomright {
+          right: 6%;
+          bottom: 6%;
+        }
+      }
+      @media (max-width: 400px) {
+        .topbar {
+          padding: 0.5rem 0.8rem;
+          gap: 12px;
+        }
+        .topbar .itm {
+          min-width: 56px;
+        }
+        .social {
+          font-size: 1.05rem;
+        }
+        .chat {
+          width: 44px;
+          height: 44px;
         }
       }
     </style>
@@ -646,17 +645,12 @@
     <!-- ========= HEADER ========= -->
     <header class="container pt-4">
       <div class="text-center mb-3">
-        <!-- <div class="brand-badge mx-auto mb-2">
-          <i class="bi bi-shield-check"></i>
-        </div> -->
         <img
-          class="bi bi-shield-check"
+          class="brand"
           src="assets/img/logo/bontang.svg"
-          height="170"
-          width="170"
-          alt=""
+          alt="Lambang Kota Bontang"
         />
-        <h1 class="title fw-bold display-6 mb-1">PETA KITA KOTA BONTANG</h1>
+        <h1 class="title fw-bold mb-1">PETA KITA KOTA BONTANG</h1>
         <p class="subtitle mb-0">
           Badan Perencanaan Pembangunan Riset dan Inovasi Daerah
         </p>
@@ -664,26 +658,26 @@
 
       <!-- Oval menu biru -->
       <nav class="topbar">
-        <a href="#" class="itm">
-          <div class="ico"><i class="bi bi-globe"></i></div>
-          <small>Bapperida</small>
-        </a>
-        <a href="#" class="itm">
-          <div class="ico"><i class="bi bi-geo-alt"></i></div>
-          <small>Geoportal</small>
-        </a>
-        <a href="#" class="itm">
-          <div class="ico"><i class="bi bi-database"></i></div>
-          <small>Satu Data</small>
-        </a>
-        <a href="#" class="itm">
-          <div class="ico"><i class="bi bi-flag"></i></div>
-          <small>SP4N Lapor</small>
-        </a>
-        <a href="#" class="itm">
-          <div class="ico"><i class="bi bi-question-circle"></i></div>
-          <small>About</small>
-        </a>
+        <a href="#" class="itm"
+          ><div class="ico"><i class="bi bi-globe"></i></div>
+          <small>Bapperida</small></a
+        >
+        <a href="#" class="itm"
+          ><div class="ico"><i class="bi bi-geo-alt"></i></div>
+          <small>Geoportal</small></a
+        >
+        <a href="#" class="itm"
+          ><div class="ico"><i class="bi bi-database"></i></div>
+          <small>Satu Data</small></a
+        >
+        <a href="#" class="itm"
+          ><div class="ico"><i class="bi bi-flag"></i></div>
+          <small>SP4N Lapor</small></a
+        >
+        <!-- <a href="#" class="itm"
+          ><div class="ico"><i class="bi bi-question-circle"></i></div>
+          <small>About</small></a
+        > -->
       </nav>
     </header>
 
@@ -695,22 +689,24 @@
           class="col-lg-6 d-flex justify-content-lg-start justify-content-center"
         >
           <div class="globe-wrap">
-            <div class="globe" data-view="highlights" id="btn-highlights"></div>
+            <!-- klik globe = kembali ke Highlights -->
+            <div
+              class="globe"
+              data-view="highlights"
+              id="btn-highlights"
+              title="Highlights"
+            ></div>
 
-            <!-- Ikon Service (Cloud) -> Highlights -->
-            <!-- <div class="badge-float at-left" data-view="highlights" title="Service / Highlights" id="btn-highlights">
-            <i class="bi bi-cloud-arrow-up fs-3"></i>
-          </div> -->
+            <!-- Ikon Service -> Panel Service -->
             <div
               class="badge-float at-left"
               data-view="service"
-              title="Service / Highlights"
+              title="Service"
               id="btn-service"
             >
               <i class="bi bi-cloud-arrow-up fs-3"></i>
             </div>
-
-            <!-- Ikon Information (Pin) -> Information -->
+            <!-- Ikon Information -> Panel Information -->
             <div
               class="badge-float at-topright"
               data-view="information"
@@ -719,8 +715,7 @@
             >
               <i class="bi bi-geo-alt fs-3"></i>
             </div>
-
-            <!-- Ikon Participation (People) -> (opsional) -->
+            <!-- Ikon Participation -> Panel Participation -->
             <div
               class="badge-float at-bottomright"
               data-view="participation"
@@ -732,44 +727,33 @@
           </div>
         </div>
 
-        <!-- RIGHT: Dynamic panels (switch by clicking icons) -->
+        <!-- RIGHT: Dynamic panels -->
         <div class="col-lg-6" id="right-panels">
-          <!-- Panel HIGHLIGHTS (default seperti gambar utama) -->
-          <section id="panel-highlights" class="">
+          <!-- Highlights -->
+          <section id="panel-highlights">
             <div class="card card-glass mb-4">
               <div class="card-body p-4">
                 <h4 class="card-title mb-2">Newest Map</h4>
                 <div class="card-divider"></div>
-                <!-- contoh isi -->
-                <ul class="list-group list-group-flush">
-                  <li
-                    class="list-group-item d-flex justify-content-between align-items-center"
-                  >
-                    <span
-                      ><i class="bi bi-map me-2 text-primary"></i>Tematik RTH
-                      2025</span
-                    >
+                <div class="list-group list-group-flush">
+                  <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+                    href="#" target="_blank" rel="noopener">
+                    <span><i class="bi bi-map me-2 text-primary"></i>Tematik RTH 2025</span>
                     <i class="bi bi-chevron-right"></i>
-                  </li>
-                  <li
-                    class="list-group-item d-flex justify-content-between align-items-center"
-                  >
-                    <span
-                      ><i class="bi bi-pin-map me-2 text-primary"></i>Persebaran
-                      Posyandu</span
-                    >
+                  </a>
+
+                  <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+                    href="#" target="_blank" rel="noopener">
+                    <span><i class="bi bi-pin-map me-2 text-primary"></i>Persebaran Posyandu</span>
                     <i class="bi bi-chevron-right"></i>
-                  </li>
-                  <li
-                    class="list-group-item d-flex justify-content-between align-items-center"
-                  >
-                    <span
-                      ><i class="bi bi-layers me-2 text-primary"></i>Peta Lahan
-                      Pemerintah</span
-                    >
+                  </a>
+
+                  <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+                    href="#" target="_blank" rel="noopener">
+                    <span><i class="bi bi-layers me-2 text-primary"></i>Peta Lahan Pemerintah</span>
                     <i class="bi bi-chevron-right"></i>
-                  </li>
-                </ul>
+                  </a>
+                </div>
               </div>
             </div>
 
@@ -777,65 +761,50 @@
               <div class="card-body p-4">
                 <h4 class="card-title mb-2">Most Popular</h4>
                 <div class="card-divider"></div>
-                <!-- contoh isi -->
-                <ul class="list-group list-group-flush">
-                  <li
-                    class="list-group-item d-flex justify-content-between align-items-center"
-                  >
-                    <span
-                      ><i class="bi bi-graph-up me-2 text-primary"></i>Dashboard
-                      Status Gizi</span
-                    >
-                    <span class="badge text-bg-light">12.4k</span>
-                  </li>
-                  <li
-                    class="list-group-item d-flex justify-content-between align-items-center"
-                  >
-                    <span
-                      ><i class="bi bi-hospital me-2 text-primary"></i>Fasilitas
-                      Umum Bontang</span
-                    >
-                    <span class="badge text-bg-light">9.1k</span>
-                  </li>
-                  <li
-                    class="list-group-item d-flex justify-content-between align-items-center"
-                  >
-                    <span
-                      ><i class="bi bi-shield-check me-2 text-primary"></i
-                      >Rencana Tata Ruang</span
-                    >
-                    <span class="badge text-bg-light">7.8k</span>
-                  </li>
-                </ul>
+                <div class="list-group list-group-flush">
+                  <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+                    href="#" target="_blank" rel="noopener">
+                    <span><i class="bi bi-graph-up me-2 text-primary"></i>Dashboard Status Gizi</span><span class="badge text-bg-light">12.4k</span>
+                  </a>
+
+                  <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+                    href="#" target="_blank" rel="noopener">
+                    <span><i class="bi bi-hospital me-2 text-primary"></i>Fasilitas Umum Bontang</span><span class="badge text-bg-light">9.1k</span>                   
+                  </a>
+
+                  <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+                    href="#" target="_blank" rel="noopener">
+                    <span><i class="bi bi-shield-check me-2 text-primary"></i>Rencana Tata Ruang</span><span class="badge text-bg-light">7.8k</span>                 
+                  </a>
+                </div>
+                
               </div>
             </div>
           </section>
 
-          <!-- Panel INFORMATION (seperti gambar 1) -->
+          <!-- Service -->
           <section id="panel-service" class="d-none">
             <div class="d-flex align-items-center gap-4">
               <div class="node">
                 <div>
-                  <div class="icon"><i class="bi bi-cloud-arrow-up"></i></div>
+                  <div class="icon"><i class="bi bi-geo-alt-fill"></i></div>
                   <div class="fw-bold">Service</div>
                 </div>
               </div>
               <div
                 class="connector flex-grow-1 d-flex flex-column justify-content-center"
               >
-                <div class="chip">
-                  <i class="bi bi-journal-text me-2"></i> Galeri Peta Tematik
-                  dan Dashboard
+                <div class="chip text-center">
+                  <i class="bi bi-journal-text me-2"></i> Galeri Peta Tematik dan Dashboard
                 </div>
-                <div class="chip">
-                  <i class="bi bi-award me-2"></i> Peta Fasilitas Umum Kota
-                  Bontang
+                <div class="chip text-center">
+                  <i class="bi bi-award me-2"></i> Peta Fasilitas Umum Kota Bontang
                 </div>
               </div>
             </div>
           </section>
 
-          <!-- Panel INFORMATION (seperti gambar 2) -->
+          <!-- Information -->
           <section id="panel-information" class="d-none">
             <div class="d-flex align-items-center gap-4">
               <div class="node">
@@ -858,7 +827,7 @@
             </div>
           </section>
 
-          <!-- Panel PARTICIPATION (opsional; bisa diisi nanti) -->
+          <!-- Participation -->
           <section id="panel-participation" class="d-none">
             <div class="d-flex align-items-center gap-4">
               <div class="node">
@@ -882,11 +851,18 @@
 
     <!-- Footer floating icons -->
     <div class="social">
-      <a href="#" class="text-reset"><i class="bi bi-facebook"></i></a>
-      <a href="#" class="text-reset"><i class="bi bi-instagram"></i></a>
-      <a href="#" class="text-reset"><i class="bi bi-youtube"></i></a>
+      <a href="#" class="text-reset" aria-label="Facebook"
+        ><i class="bi bi-facebook"></i
+      ></a>
+      <a href="#" class="text-reset" aria-label="Instagram"
+        ><i class="bi bi-instagram"></i
+      ></a>
+      <a href="#" class="text-reset" aria-label="YouTube"
+        ><i class="bi bi-youtube"></i
+      ></a>
     </div>
-    <!-- Tombol toggle mengambang -->
+
+    <!-- Chat toggle -->
     <a
       href="#"
       class="chat"
@@ -900,7 +876,7 @@
       <span class="visually-hidden">Buka PetaKita Assistant</span>
     </a>
 
-    <!-- Kontainer chatbot -->
+    <!-- Chatbot -->
     <div
       class="chatbot-container"
       id="chatbot"
@@ -928,11 +904,7 @@
         <div class="message bot-message" role="status" aria-live="polite">
           <div class="message-content">
             <i class="fas fa-robot" aria-hidden="true"></i>
-            <p>
-              Halo! Saya asisten PetaKita yang siap membantu Anda dengan
-              informasi seputar Kota Bontang. Apa yang ingin Anda ketahui
-              tentang Bontang hari ini?
-            </p>
+            <p>Halo! Saya asisten PetaKita. Ada yang bisa dibantu?</p>
           </div>
         </div>
       </div>
@@ -963,7 +935,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-      // ========= Toggle panel by clicking the floating ICONS =========
+      /* ===== Panel switching via icons ===== */
       const views = ["highlights", "service", "information", "participation"];
       const panels = {
         highlights: document.getElementById("panel-highlights"),
@@ -979,21 +951,29 @@
       };
 
       function setView(v) {
-        // show/hide panels
         views.forEach((key) => {
           panels[key].classList.toggle("d-none", key !== v);
-          icons[key].classList.toggle("active", key === v);
+          if (icons[key]) icons[key].classList.toggle("active", key === v);
         });
       }
-
-      // default: Highlights aktif (mirip desain)
+      // Default: Highlights
       setView("highlights");
 
-      // listeners
+      // Click handlers
       Object.entries(icons).forEach(([k, el]) => {
+        if (!el) return;
         el.addEventListener("click", () => setView(k));
+        el.setAttribute("role", "button");
+        el.setAttribute("tabindex", "0");
+        el.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            setView(k);
+          }
+        });
       });
+
     </script>
     <script src="public/js/chatbot.js"></script>
-  </body>
+    <script src="public/js/chatbot-api.js"></script>
 </html>
